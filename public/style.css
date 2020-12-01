@@ -50,11 +50,15 @@ table {
 .col1 {
     width: 30%;
 }
-input { 
+.inputText { 
     margin: 1% 0;
     width: 90%; 
     height: 2em; 
     border: 1px solid grey; 
     border-radius: 3px;
     padding: 1px;
+}
+
+.radio {
+    display: inline;
 }

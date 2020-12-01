@@ -55,14 +55,14 @@
            <table>
              <tr>
                <td class="col1"><label for="fname">First name<span style="color: red;">*</span>:</label></td>
-               <td class="col2"><input type="text" id="fname" name="fname" required></td>
+               <td class="col2"><input class="inputText" type="text" id="fname" name="fname" required></td>
              </tr>
              <tr>
               <td class="col1">
                 <label for="lname">Last name<span style="color: red;">*</span>:</label>
               </td>
               <td class="col2">
-                <input type="text" id="lname" name="lname" required>
+                <input class="inputText" type="text" id="lname" name="lname" required>
               </td>
              </tr>
              <tr>
@@ -70,7 +70,7 @@
                 <label for="email">Email<span style="color: red;">*</span>:</label>
               </td>
               <td class="col2">
-                <input type="email" id="email" name="email" required>
+                <input class="inputText" type="email" id="email" name="email" required>
               </td>
              </tr>
              <tr>
@@ -78,7 +78,7 @@
                 <label for="phone">Phone<span style="color: red;">*</span>:</label>
               </td>
               <td class="col2">
-                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                <input class="inputText" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
               </td>
              </tr>
              <tr>
@@ -86,7 +86,7 @@
                 <label for="organization">Organization<span style="color: red;">*</span>:</label>
               </td>
               <td class="col2">
-                <input type="text" id="organization" name="organization" required>
+                <input class="inputText" type="text" id="organization" name="organization" required>
               </td>
              </tr>
              <tr>
@@ -94,7 +94,7 @@
                 <label for="zipcode">Zip Code<span style="color: red;">*</span>:</label>
               </td>
               <td class="col2">
-                <input type="text" id="zipcode" name="zipcode" required>
+                <input class="inputText" type="text" id="zipcode" name="zipcode" required>
               </td>
              </tr>
              <tr>
@@ -102,7 +102,7 @@
                 <label for="fips">FIPs:</label>
               </td>
               <td class="col2">
-                <input type="text" id="fips" name="fips">
+                <input class="inputText" type="text" id="fips" name="fips">
               </td>
              </tr>
            </table>
@@ -113,28 +113,34 @@
             <table>
               <tr>
                 <td class="col1"><label for="goal">Please make a selection<span style="color: red;">*</span>:</label></td>
-                <td class="col2"><<input type="radio" id="fname" name="fname" required>></td>
+                <td class="col2">
+                  <input class="radio" type="radio" id="preTest" name="preTest">
+                  <label for="preTest">Determine the diagnostic pre-test probability of COVID-19 with clinical presentation (no testing available).</label>
+                </td>
               </tr>
               <tr>
-               <td class="col1">
-                 <label for="lname">Last name<span style="color: red;">*</span>:</label>
-               </td>
-               <td class="col2">
-                 <input type="text" id="lname" name="lname" required>
-               </td>
+                <td class="col1"></td>
+                <td class="col2">
+                  <input class="radio" type="radio" id="preTest" name="postTest">
+                  <label for="postTest">Determine the diagnostic post-test probabilities of existing or planned SARS-CoV2 test results.</label>
+                </td>
               </tr>
               <tr>
-               <td class="col1">
-                 <label for="email">Email<span style="color: red;">*</span>:</label>
-               </td>
-               <td class="col2">
-                 <input type="email" id="email" name="email" required>
-               </td>
+                <td class="col1"><label for="goal">Please select a test type:</label></td>
+                <td class="col2">
+                  <select name="testType" id="testType">
+                    <option value="" disabled="disabled" selected="true" >Select an option</option>
+                    <option value="pcr">PCR</option>
+                    <option value="iggElisa">igG ELISA</option>
+                    <option value="igmElisa">igM ELISA</option>
+                  </select>
+                </td>
               </tr>
+              
               
             </table>
            </fieldset>
-          <!-- <input type="submit" value="Submit"> -->
+          <!-- <input class="inputText" type="submit" value="Submit"> -->
          </form>
       </div>
       <!---------------- Tutorial ---------------->
@@ -148,35 +154,7 @@
         <p>Predictive values of test results need to be interpreted according to both context and intended use. For instance, a negative SARS CoV2 PCR assay may reflect biologic absence of the virus, and lower probability of infectivity, while not ruling out SARS CoV2 as the cause of ongoing disease, especially when testing is performed late relative to onset of symptoms. The tool that was developed is meant to provide a general indicator using GREEN – YELLOW – RED symbols to assist clinicians in thinking through how pre-test probability can inform probabilistic interpretation, and to remind clinicians to consider results in context of use.</p>
       </div>
       <!-- JQuery script -->
-      <script>
-        $('#aboutLink').click(function(){
-            $(this).parent().find('.narbarLink').css('border', '1px solid gray');
-            $(this).parent().find('.narbarLink').css('background-image', 'linear-gradient(to bottom right, rgb(170, 170, 170), rgba(236, 236, 232, 0.781))');
-            $(this).css('background-image', 'linear-gradient(to bottom right, rgb(245, 245, 245), rgba(255, 255, 255, 0.993))');
-            $(this).css('border-bottom', '1px solid  rgb(255, 255, 255)');
-            $('#about').show();
-            $('#tool').hide();
-            $('#tutorial').hide();
-          });
-        $('#toolLink').click(function(){
-          $(this).parent().find('.narbarLink').css('border', '1px solid gray');
-          $(this).parent().find('.narbarLink').css('background-image', 'linear-gradient(to bottom right, rgb(170, 170, 170), rgba(236, 236, 232, 0.781))');
-          $(this).css('background-image', 'linear-gradient(to bottom right, rgb(245, 245, 245), rgba(255, 255, 255, 0.993))');
-          $(this).css('border-bottom', '1px solid  rgb(255, 255, 255)');
-          $('#about').hide();
-          $('#tool').show();
-          $('#tutorial').hide();
-        });
-        $('#tutorialLink').click(function(){
-          $(this).parent().find('.narbarLink').css('border', '1px solid gray');
-          $(this).parent().find('.narbarLink').css('background-image', 'linear-gradient(to bottom right, rgb(170, 170, 170), rgba(236, 236, 232, 0.781))');
-          $(this).css('background-image', 'linear-gradient(to bottom right, rgb(245, 245, 245), rgba(255, 255, 255, 0.993))');
-          $(this).css('border-bottom', '1px solid  rgb(255, 255, 255)');
-          $('#about').hide();
-          $('#tool').hide();
-          $('#tutorial').show();
-        });
-      </script>
+      <script defer src="./main.js"></script>
       <!-- Firebase script -->
       <script>
         document.addEventListener('DOMContentLoaded', function() {
