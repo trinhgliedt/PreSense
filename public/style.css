@@ -1,5 +1,5 @@
 * {
-    outline: 1px solid grey;
+    /* outline: 1px solid grey; */
 }
 #container {
     margin: 10px auto;
@@ -21,7 +21,6 @@
     border: 1px solid gray;
     border-bottom: none;
     padding: 1.5% 1.5%;
-    z-index: -1;
     margin-bottom: -1px;
 }
 .narbarLink h1 {
@@ -33,11 +32,17 @@
     font-size: large;
     border: 1px solid grey;
     border-radius: 0 10px 10px 10px;
-    z-index: -1;
 }
 fieldset{
+    margin-top: 1em;
     padding-top: 0.5em;
     border: 1px solid grey;
+    border-radius: 2px;
+}
+legend {
+    border: 1px solid grey;
+    padding: 0.4em;
+    border-radius: 2px;
 }
 table {
     width: 100%;
@@ -45,12 +50,9 @@ table {
 .col1 {
     width: 30%;
 }
-/* .col1 {
-    width: 30%;
-} */
 input { 
-    /* margin-left: 10%; */
-    width: 70%; 
+    margin: 1% 0;
+    width: 90%; 
     height: 2em; 
     border: 1px solid grey; 
     border-radius: 3px;
