@@ -25,3 +25,29 @@ $('#tutorialLink').click(function(){
   $('#tool').hide();
   $('#tutorial').show();
 });
+
+$('#testType').on('change', function() {
+    if ( this.value === 'pcr')
+    {
+        console.log("in pcr");
+      $(".goalPCR").show();
+      $(".goalIgg").hide();
+      $(".goalIgm").hide();
+    }
+    
+    else if ( this.value === 'igg')
+    {
+        console.log("in igg")
+
+      $(".goalPCR").hide();
+      $(".goalIgg").show();
+      $(".goalIgm").hide();
+    }
+    else if ( this.value === 'igm')
+    {
+        console.log("in igM");
+      $(".goalPCR").hide();
+      $(".goalIgg").hide();
+      $(".goalIgm").show();
+    }
+  });

@@ -4,6 +4,7 @@
 #container {
     margin: 10px auto;
     max-width: 1000px;
+    margin-bottom: 5em;
 }
 
 .narbar {
@@ -61,4 +62,12 @@ table {
 
 .radio {
     display: inline;
+}
+select {
+    margin: 1em 0;
+    height: 2em; 
+}
+
+.goalPCR, .goalIgg, .goalIgm {
+    /* display: none; */
 }
