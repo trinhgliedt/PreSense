@@ -2,26 +2,50 @@
     /* outline: 1px solid grey; */
 }
 #container {
-    margin: 10px auto;
+    margin: 0 auto;
     max-width: 1000px;
     margin-bottom: 5em;
+    padding: 0;
+}
+#headerBar {
+    margin: 0 0 0.7em 0;
+    border-radius: 0.4em 0.4em 0 0;
+    background-image: linear-gradient(rgb(170, 170, 170), rgba(221, 221, 216, 0.781), rgb(170, 170, 170));
+    display:table;
+}
+#logo, #pageName {
+    vertical-align: middle;
+    display:table-cell;
+}
+
+#logo {
+    margin: 0.5em 0.5em 0.5em 1em;
+    display: inline;
+
+}
+
+#pageName {
+    margin-top: 0.7em;
+    display: inline-block;
+
 }
 
 .narbar {
     width: 100%;
 }
 #aboutLink {
+    border: 1px solid gray;
     background-image: linear-gradient(to bottom right, rgb(245, 245, 245), rgba(255, 255, 255, 0.993));
     border-bottom: 1px solid rgb(255, 255, 255);
 }
 #tutorialLink, #toolLink {
-    background-image: linear-gradient(to bottom right, rgb(170, 170, 170), rgba(236, 236, 232, 0.781));
+    background-image: linear-gradient(rgb(170, 170, 170), rgba(221, 221, 216, 0.781), rgb(170, 170, 170));
 }
 .narbarLink {
-    border-radius: 15px 15px 0 0;
-    border: 1px solid gray;
+    border-radius: 0.95em 0.95em 0 0;
+    border: 1px solid rgba(179, 176, 176, 0.308);
     border-bottom: none;
-    padding: 1.5% 1.5%;
+    padding: 1.2% 1.5%;
     margin-bottom: -1px;
     cursor:pointer;
 }
@@ -34,7 +58,7 @@
 }
 
 .content {
-    padding: 10px;
+    padding: 0 2.5% 2% 2.5%;
     font-size: large;
     border: 1px solid grey;
     border-radius: 0 10px 10px 10px;
@@ -104,12 +128,16 @@ small {
 }
 #resetButton {
     margin-left: 1em;
-    background: radial-gradient(#ebe687, #e9e797, #dcdfb8);
+    background-color: #fae847;
+    background-image: linear-gradient(rgb(226, 219, 161), rgba(238, 238, 230, 0.781), rgb(226, 219, 161));
+    /* background: radial-gradient(#ebe687, #e9e797, #dcdfb8); */
 }
 
 #submitButton {
     margin-left: 75%;
-    background: radial-gradient(#70ece6, #83ebeb, #c7f0ec);
+    /* background-color: #68b2f8; */
+    background-image: linear-gradient(rgb(170, 170, 170), rgba(221, 221, 216, 0.781), rgb(170, 170, 170));
+    /* background: radial-gradient(#70ece6, #83ebeb, #c7f0ec); */
     font-weight: bold;
     
 }
