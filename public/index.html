@@ -15,6 +15,8 @@
   </head>
   <body>
     <div id="container">
+        
+        <h1>PreSense - COVID19</h1>
       <div id="navbar">
         <button id="aboutLink" class="narbarLink"><h1 >About</h1></button>
         <button id="toolLink" class="narbarLink"><h1 >Tool</h1></button>
@@ -66,7 +68,7 @@
                 <label for="phone">Phone<span style="color: red;">*</span>:</label>
               </td>
               <td class="col2">
-                <input class="inputText" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                <input class="inputText" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="###-##-####">
               </td>
              </tr>
              <tr>
@@ -179,7 +181,7 @@
               </tr>
               <tr>
                 <td class="col1"><label for="patientAge">Patient's age<span style="color: red;">*</span>:</label></td>
-                <td class="col2"><input class="inputText" type="number" id="patientAge" name="patientAge" min="0" required></td>
+                <td class="col2"><input class="inputText" type="number" id="patientAge" name="patientAge" min="0" max="120" required></td>
               </tr>
               <tr class="">
                 <td class="col1 formSection"><label for="goal">Symptoms (check all that apply)<span style="color: red;">*</span>:</label></td>
@@ -313,7 +315,58 @@
               </tr>
               <tr>
                 <td colspan="2">
-                  <div>Color bar</div>
+                  <!------ Slider bar -------->
+                  <div>
+                    <style>
+                      .slidecontainer {
+                          width: 100%;
+                      }
+                
+                      .slider1 {
+                          text-align: center;
+                          margin-top: 20px;
+                          width: 100%;
+                          height: 100px;
+                          margin: 0 auto;
+                          position: relative;
+                          top: 25px;
+                          -webkit-appearance: none;
+                          height: 25px;
+                          background: linear-gradient(to left,
+                                  #35a834 10%,
+                                  #ffd400 30%,
+                                  #ff6400 70%,
+                                  red 100%);
+                          transition: opacity .2s;
+                          border-radius: 20px;
+                      }
+                
+                      .slider1::-webkit-slider-thumb {
+                          -webkit-appearance: none;
+                          appearance: none;
+                          width: 15px;
+                          height: 45px;
+                          background: #000;
+                          cursor: pointer;
+                      }
+                
+                      .slider1::-moz-range-thumb {
+                          width: 25px;
+                          height: 25px;
+                          background: #000;
+                          cursor: pointer;
+                      }
+                
+                      #demo {
+                          text-align: center;
+                          margin: 3vh;
+                          font-size: 24px;
+                      }
+                  </style>
+                
+                  <div id='my-slider'>Slider Bar</div>
+                
+                  </div>
                   <p>Test result</p>
                 </td>  
               </tr>

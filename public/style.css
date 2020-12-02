@@ -23,7 +23,12 @@
     border-bottom: none;
     padding: 1.5% 1.5%;
     margin-bottom: -1px;
+    cursor:pointer;
 }
+.narbarLink:focus {
+    outline-style: none;
+}
+
 .narbarLink h1 {
     display: inline;
 }
@@ -57,7 +62,7 @@ table {
     height: 2em; 
     border: 1px solid grey; 
     border-radius: 3px;
-    padding: 1px;
+    padding-left: 0.5em;
 }
 
 #feedbackInput {
