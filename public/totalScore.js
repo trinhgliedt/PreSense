@@ -37,10 +37,14 @@ $(".scoreField").change(function(){
     }
 
     // Calculate neutLympScore:
-    neutLympScore = parseFloat($('input[name="score"]').val());
+    if ($('input[name="score"]').val().length ==! 0){
+        neutLympScore = parseFloat($('input[name="score"]').val());
+    }
 
     // Calculate radiographyScore:
     radiographyScore = parseFloat($('#radiography option:selected').val());
+    // if ($('#radiography option:selected').val().length ==! 0){
+    // }
 
     // Calculate prevalenceScore:
     prevalenceScore = 0;

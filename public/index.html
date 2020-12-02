@@ -310,15 +310,15 @@
             <table>
               <tr>
                 <td class="col1"><label for="prevalence">Prevalence (Covidcast):</label></td>
-                <td class="col2"><input class="inputText scoreField" type="text" id="prevalence" name="prevalence" ></td>
+                <td class="col2"><input class="inputText scoreField" type="text" id="prevalence" name="prevalence" disabled></td>
               </tr>
               <tr>
                 <td class="col1"><label for="totalScore">Total Score:</label></td>
-                <td class="col2"><input class="inputText" type="text" id="totalScore" name="totalScore" ></td>
+                <td class="col2"><input class="inputText" type="text" id="totalScore" name="totalScore" disabled ></td>
               </tr>
               <tr>
-                <td class="col1"><label for="probability">Estimated Pre-Test Probability:</label></td>
-                <td class="col2"><input class="inputText" type="text" id="probability" name="probability" ></td>
+                <td class="col1"><label for="preTestProbability">Estimated Pre-Test Probability:</label></td>
+                <td class="col2"><input class="inputText" type="text" id="preTestProbability" name="preTestProbability" disabled></td>
               </tr>
               <tr>
                 <td class="col1"><label for="npv">Negative Predictive Value:</label></td>
@@ -371,6 +371,7 @@
       <script defer src="./main.js"></script>
       <script defer src="./neut_lymp_ratio.js"></script>
       <script defer src="./totalScore.js"></script>
+      <script defer src="./preTestProbability.js"></script>
       <!-- Firebase script -->
     </div>
   </body>
