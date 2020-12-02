@@ -2,7 +2,11 @@ function calculateRatio(){
     var neutrophil = parseFloat($('input[name="neutrophil"]').val());
     var lymphocyte = parseFloat($('input[name="lymphocyte"]').val());
     var ratio = neutrophil/lymphocyte;
+    var neut_lym_score;
+    if (ratio >= 2.4) {neut_lym_score = 5;}
+    else if (ratio < 2.4){neut_lym_score = 0;}
     $('input[name="nLratio"]').val(ratio);
+    $('input[name="score"]').val(neut_lym_score);
 }
 
 function checkAndCalculateRatio(){

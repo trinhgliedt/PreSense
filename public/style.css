@@ -130,14 +130,11 @@ small {
     margin-left: 1em;
     background-color: #fae847;
     background-image: linear-gradient(rgb(226, 219, 161), rgba(238, 238, 230, 0.781), rgb(226, 219, 161));
-    /* background: radial-gradient(#ebe687, #e9e797, #dcdfb8); */
 }
 
 #submitButton {
     margin-left: 75%;
-    /* background-color: #68b2f8; */
     background-image: linear-gradient(rgb(170, 170, 170), rgba(221, 221, 216, 0.781), rgb(170, 170, 170));
-    /* background: radial-gradient(#70ece6, #83ebeb, #c7f0ec); */
     font-weight: bold;
     
 }
@@ -192,3 +189,7 @@ small {
     font-size: 24px;
 }
 /* End of Slider bar */
+
+#neut_lym_score {
+    /* display: none; */
+}
