@@ -1,3 +1,8 @@
+// Date of symptoms: set today to be maximum date the user can choose
+var now = new Date(),
+    maxDate = now.toISOString().substring(0,10);
+$('#dateOfSymptoms').prop('max', maxDate);
+
 $('#aboutLink').click(function(){
     $(this).parent().find('.narbarLink').css('border', '1px solid gray');
     $(this).parent().find('.narbarLink').css('background-image', 'linear-gradient(to bottom right, rgb(170, 170, 170), rgba(236, 236, 232, 0.781))');

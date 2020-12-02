@@ -92,3 +92,75 @@ small {
     margin-top: 0;
     font-style: italic;
 }
+
+#resetButton, #submitButton {
+    padding: 0.5em 0.7em;
+    margin-top: 0.6em;
+    border-radius: 0.3em;
+    box-shadow: 0.15em 0.15em;
+    font-size: large;
+    cursor: pointer;
+    border: none;
+}
+#resetButton {
+    margin-left: 1em;
+    background: radial-gradient(#ebe687, #e9e797, #dcdfb8);
+}
+
+#submitButton {
+    margin-left: 75%;
+    background: radial-gradient(#70ece6, #83ebeb, #c7f0ec);
+    font-weight: bold;
+    
+}
+
+#resetButton:focus, #submitButton:focus {
+    outline-style: none;
+}
+
+/* Beg of Slider bar */
+.slidecontainer {
+    width: 100%;
+}
+
+.slider1 {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+    top: 25px;
+    -webkit-appearance: none;
+    height: 25px;
+    background: linear-gradient(to left,
+            #35a834 10%,
+            #ffd400 30%,
+            #ff6400 70%,
+            red 100%);
+    transition: opacity .2s;
+    border-radius: 20px;
+}
+
+.slider1::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 45px;
+    background: #000;
+    cursor: pointer;
+}
+
+.slider1::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #000;
+    cursor: pointer;
+}
+
+#demo {
+    text-align: center;
+    margin: 3vh;
+    font-size: 24px;
+}
+/* End of Slider bar */

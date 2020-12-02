@@ -8,6 +8,7 @@
     <!-- update the version number as needed -->
     <link rel="stylesheet" href="./style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     <!-- 
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
@@ -15,8 +16,8 @@
   </head>
   <body>
     <div id="container">
-        
         <h1>PreSense - COVID19</h1>
+        <!-- nav bar -->
       <div id="navbar">
         <button id="aboutLink" class="narbarLink"><h1 >About</h1></button>
         <button id="toolLink" class="narbarLink"><h1 >Tool</h1></button>
@@ -256,15 +257,15 @@
             <table>
               <tr>
                 <td class="col1"><label for="neutrophil">Neutrophil (count):</label></td>
-                <td class="col2"><input class="inputText" type="text" id="neutrophil" name="neutrophil" ></td>
+                <td class="col2"><input class="inputText" type="number" id="neutrophil" name="neutrophil" ></td>
               </tr>
               <tr>
                 <td class="col1"><label for="lymphocyte">Lymphocyte (count):</label></td>
-                <td class="col2"><input class="inputText" type="text" id="lymphocyte" name="lymphocyte" ></td>
+                <td class="col2"><input class="inputText" type="number" id="lymphocyte" name="lymphocyte" ></td>
               </tr>
               <tr>
                 <td class="col1"><label for="nLratio">Neutrophil / Lymphocyte Ratio:</label></td>
-                <td class="col2"><input class="inputText" type="text" id="nLratio" name="nLratio" ></td>
+                <td class="col2"><input class="inputText" type="text" id="nLratio" name="nLratio" disabled></td>
               </tr>
             </table>
            </fieldset>
@@ -317,53 +318,6 @@
                 <td colspan="2">
                   <!------ Slider bar -------->
                   <div>
-                    <style>
-                      .slidecontainer {
-                          width: 100%;
-                      }
-                
-                      .slider1 {
-                          text-align: center;
-                          margin-top: 20px;
-                          width: 100%;
-                          height: 100px;
-                          margin: 0 auto;
-                          position: relative;
-                          top: 25px;
-                          -webkit-appearance: none;
-                          height: 25px;
-                          background: linear-gradient(to left,
-                                  #35a834 10%,
-                                  #ffd400 30%,
-                                  #ff6400 70%,
-                                  red 100%);
-                          transition: opacity .2s;
-                          border-radius: 20px;
-                      }
-                
-                      .slider1::-webkit-slider-thumb {
-                          -webkit-appearance: none;
-                          appearance: none;
-                          width: 15px;
-                          height: 45px;
-                          background: #000;
-                          cursor: pointer;
-                      }
-                
-                      .slider1::-moz-range-thumb {
-                          width: 25px;
-                          height: 25px;
-                          background: #000;
-                          cursor: pointer;
-                      }
-                
-                      #demo {
-                          text-align: center;
-                          margin: 3vh;
-                          font-size: 24px;
-                      }
-                  </style>
-                
                   <div id='my-slider'>Slider Bar</div>
                 
                   </div>
@@ -385,7 +339,12 @@
               </tr>
             </table>
            </fieldset>
-          <!-- <input class="inputText" type="submit" value="Submit"> -->
+           <!-- Bottom buttons -->
+           <div>
+            <input id="resetButton" type="reset" value="Reset">
+            <input id="submitButton" type="submit" value="Submit">
+
+           </div>
          </form>
       </div>
       <!---------------- Tutorial ---------------->
@@ -400,6 +359,7 @@
       </div>
       <!-- JQuery script -->
       <script defer src="./main.js"></script>
+      <script defer src="./neutrophil_lymphocyte_ratio.js"></script>
       <!-- Firebase script -->
     </div>
   </body>
