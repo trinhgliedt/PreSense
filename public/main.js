@@ -51,3 +51,23 @@ $('#testType').on('change', function() {
       $(".goalIgm").show();
     }
   });
+  $('#preTest').click(function(){
+    $(".goalTestType").hide();
+    $(".goalPCR").hide();
+    $(".goalIgg").hide();
+    $(".goalIgm").hide();
+    $('#testType option:eq(0)').prop('selected', true)
+  });
+  $('#postTest').click(function(){
+    $(".goalTestType").show();
+
+  });
+
+  $('#symptomNone').click(function(){
+    $(".hasSymptom").prop( "checked", false );
+
+  });
+  $('.hasSymptom').click(function(){
+    $("#symptomNone").prop( "checked", false );
+
+  });

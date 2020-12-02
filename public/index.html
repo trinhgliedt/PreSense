@@ -113,59 +113,222 @@
                   <label for="postTest">Determine the diagnostic post-test probabilities of existing or planned SARS-CoV2 test results.</label>
                 </td>
               </tr>
+                <tr class="goalTestType">
+                  <td class="col1"><label for="goal">Please select a test type:</label></td>
+                  <td class="col2">
+                    <select name="testType" id="testType">
+                      <option value="pleaseSelect" disabled="disabled" selected="true" >Select an option</option>
+                      <option value="pcr">PCR</option>
+                      <option value="igg">igG ELISA</option>
+                      <option value="igm">igM ELISA</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="goalPCR">
+                  <td class="col1"><label for="goal">Indicate the PCR result:</td>
+                  <td class="col2">
+                    <input class="radio" type="radio" id="posPCR" name="pcrResult">
+                    <label for="posPCR">Positive</label>
+                  </td>
+                </tr>
+                <tr class="goalPCR">
+                  <td class="col1"></td>
+                  <td class="col2">
+                    <input class="radio" type="radio" id="negPCR" name="pcrResult">
+                    <label for="negPCR">Negative</label>
+                  </td>
+                </tr>
+                <tr class="goalIgg">
+                  <td class="col1"><label for="goal">Indicate the igG ELISA result:</td>
+                  <td class="col2">
+                    <input class="radio" type="radio" id="posPCR" name="iggResult">
+                    <label for="posPCR">Positive</label>
+                  </td>
+                </tr>
+                <tr class="goalIgg">
+                  <td class="col1"></td>
+                  <td class="col2">
+                    <input class="radio" type="radio" id="negPCR" name="iggResult">
+                    <label for="negPCR">Negative</label>
+                  </td>
+                </tr>
+                <tr class="goalIgm">
+                  <td class="col1"><label for="goal">Indicate the igM ELISA result:</td>
+                  <td class="col2">
+                    <input class="radio" type="radio" id="posPCR" name="iggResult">
+                    <label for="posPCR">Positive</label>
+                  </td>
+                </tr>
+                <tr class="goalIgm">
+                  <td class="col1"></td>
+                  <td class="col2">
+                    <input class="radio" type="radio" id="negPCR" name="iggResult">
+                    <label for="negPCR">Negative</label>
+                  </td>
+                </tr>
+            </table>
+           </fieldset>
+           <!----------------Clinical Information ---------------->
+           <fieldset>
+            <legend>Clinical Information:</legend>
+            <table>
               <tr>
-                <td class="col1"><label for="goal">Please select a test type:</label></td>
+                <td class="col1"><label for="dateOfSymptoms">Date of symptoms (mm/dd/yyyy)<span style="color: red;">*</span>:</label></td>
+                <td class="col2"><input class="inputText" type="date" id="dateOfSymptoms" name="dateOfSymptoms" required></td>
+              </tr>
+              <tr>
+                <td class="col1"><label for="patientAge">Patient's age<span style="color: red;">*</span>:</label></td>
+                <td class="col2"><input class="inputText" type="number" id="patientAge" name="patientAge" min="0" required></td>
+              </tr>
+              <tr class="">
+                <td class="col1 formSection"><label for="goal">Symptoms (check all that apply)<span style="color: red;">*</span>:</label></td>
+                <td class="col2 formSection">
+                  <input type="checkbox" class="hasSymptom"  id="symptomCough" name="symptomCough" value="symptomCough">
+                  <label for="symptomCough"> Severe / persistent cough</label>
+                </td>
+              </tr>
+              <tr class="">
+                <td class="col1"></td>
                 <td class="col2">
-                  <select name="testType" id="testType">
-                    <option value="" disabled="disabled" selected="true" >Select an option</option>
-                    <option value="pcr">PCR</option>
-                    <option value="igg">igG ELISA</option>
-                    <option value="igm">igM ELISA</option>
+                  <input type="checkbox" class="hasSymptom"  id="symptomFever" name="symptomFever" value="symptomFever">
+                  <label for="symptomFever">Fever (T > 38 / 100.6)</label>
+                </td>
+              </tr>
+              <tr class="">
+                <td class="col1"></td>
+                <td class="col2">
+                  <input type="checkbox" class="hasSymptom"  id="symptomGI" name="symptomGI" value="symptomGI">
+                  <label for="symptomGI">GI symptoms: diarrhea, nausea or skipped meals</label>
+                </td>
+              </tr>
+              <tr class="">
+                <td class="col1"></td>
+                <td class="col2">
+                  <input type="checkbox" class="hasSymptom" id="symptomFatigue" name="symptomFatigue" value="symptomFatigue">
+                  <label for="symptomFatigue">Myalgia / fatigue</label>
+                </td>
+              </tr>
+              <tr class="">
+                <td class="col1"></td>
+                <td class="col2">
+                  <input type="checkbox" class="hasSymptom"  id="symptomTaste" name="symptomTaste" value="symptomTaste">
+                  <label for="symptomTaste">Change in taste or smell</label>
+                </td>
+              </tr>
+              <tr class="">
+                <td class="col1"></td>
+                <td class="col2">
+                  <input type="checkbox" id="symptomNone" name="symptomNone" value="symptomNone">
+                  <label  for="symptomNone">None of above, or asymptomatic</label>
+                </td>
+              </tr>
+
+              
+              <tr class="">
+                <td class="col1 formSection"><label for="exposure">Exposure<span style="color: red;">*</span>:</label></td>
+                <td class="col2 formSection">
+                  <input class="radio" type="radio" id="exposureProlonged" name="exposure">
+                  <label for="exposureProlonged">Prolonged, close exposure to known case (ex. family).</label>
+                </td>
+              </tr>
+              <tr >
+                <td class="col1"></td>
+                <td class="col2">
+                  <input class="radio" type="radio" id="exposureBrief" name="exposure">
+                  <label for="exposureBrief">Brief (&#60 3 hr) exposure to known case or exposure to possible case.</label>
+                </td>
+              </tr>
+              <tr>
+                <td class="col1"></td>
+                <td class="col2">
+                  <input class="radio" type="radio" id="exposurePossible" name="exposure">
+                  <label for="exposurePossible">Possible occupational (ex. health care) or institutional (nursing home) exposure.</label>
+                </td>
+              </tr>
+            </table>
+           </fieldset>
+           <!---------------- Neutrophil / Lymphocyte Ratio ---------------->
+          <fieldset>
+            <legend>Neutrophil / Lymphocyte Ratio (if available):</legend>
+            <table>
+              <tr>
+                <td class="col1"><label for="neutrophil">Neutrophil (count):</label></td>
+                <td class="col2"><input class="inputText" type="text" id="neutrophil" name="neutrophil" ></td>
+              </tr>
+              <tr>
+                <td class="col1"><label for="lymphocyte">Lymphocyte (count):</label></td>
+                <td class="col2"><input class="inputText" type="text" id="lymphocyte" name="lymphocyte" ></td>
+              </tr>
+              <tr>
+                <td class="col1"><label for="nLratio">Neutrophil / Lymphocyte Ratio:</label></td>
+                <td class="col2"><input class="inputText" type="text" id="nLratio" name="nLratio" ></td>
+              </tr>
+            </table>
+           </fieldset>
+           <!---------------- Radiography ---------------->
+          <fieldset>
+            <legend>Radiography (if available):</legend>
+            <table>
+              <tr class="">
+                <td class="col1"><label for="radiography">Estimate % involvement with ground glass opacities or crazy-paving pattern:</label></td>
+                <td class="col2">
+                  <select name="radiography" id="radiography">
+                    <option value="pleaseSelect" disabled="disabled" selected="true" >Select an option</option>
+                    <option value="pcr">Normal Film</option>
+                    <option value="lessThan25">CT &#60 25% GGO</option>
+                    <option value="25To50">CT 25-50% GGO</option>
+                    <option value="lessThan25">CT &#62 50% GGO</option>
+                    <option value="lessThan25">CXR GGO</option>
                   </select>
                 </td>
               </tr>
+              <tr class="">
+                <td class="col1"></td>
+                <td class="col2">
+                  <small>CT score calculated in 3 parts of both lungs</small>
+                </td>
+              </tr>
+            </table>
+           </fieldset>
+           <!---------------- Result ---------------->
+          <fieldset>
+            <legend>Provider:</legend>
+            <table>
+              <tr>
+                <td class="col1"><label for="prevalence">Prevalence (Covidcast):</label></td>
+                <td class="col2"><input class="inputText" type="text" id="prevalence" name="prevalence" ></td>
+              </tr>
+              <tr>
+                <td class="col1"><label for="totalScore">Total Score:</label></td>
+                <td class="col2"><input class="inputText" type="text" id="totalScore" name="totalScore" ></td>
+              </tr>
+              <tr>
+                <td class="col1"><label for="probability">Estimated Pre-Test Probability:</label></td>
+                <td class="col2"><input class="inputText" type="text" id="probability" name="probability" ></td>
+              </tr>
+              <tr>
+                <td class="col1"><label for="npv">Negative Predictive Value:</label></td>
+                <td class="col2"><input class="inputText" type="text" id="npv" name="npv" ></td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <div>Color bar</div>
+                  <p>Test result</p>
+                </td>  
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <section>
+                    <h4>Considerations</h4>
+                    <p></p>
+                  </section>
+                </td>  
+              </tr>
               
-              <tr class="goalPCR">
-                <td class="col1"><label for="goal">Indicate the PCR result:</td>
-                <td class="col2">
-                  <input class="radio" type="radio" id="posPCR" name="pcrResult">
-                  <label for="posPCR">Positive</label>
-                </td>
-              </tr>
-              <tr class="goalPCR">
-                <td class="col1"></td>
-                <td class="col2">
-                  <input class="radio" type="radio" id="negPCR" name="pcrResult">
-                  <label for="negPCR">Negative</label>
-                </td>
-              </tr>
-              <tr class="goalIgg">
-                <td class="col1"><label for="goal">Indicate the igG ELISA result:</td>
-                <td class="col2">
-                  <input class="radio" type="radio" id="posPCR" name="iggResult">
-                  <label for="posPCR">Positive</label>
-                </td>
-              </tr>
-              <tr class="goalIgg">
-                <td class="col1"></td>
-                <td class="col2">
-                  <input class="radio" type="radio" id="negPCR" name="iggResult">
-                  <label for="negPCR">Negative</label>
-                </td>
-              </tr>
-              <tr class="goalIgm">
-                <td class="col1"><label for="goal">Indicate the igM ELISA result:</td>
-                <td class="col2">
-                  <input class="radio" type="radio" id="posPCR" name="iggResult">
-                  <label for="posPCR">Positive</label>
-                </td>
-              </tr>
-              <tr class="goalIgm">
-                <td class="col1"></td>
-                <td class="col2">
-                  <input class="radio" type="radio" id="negPCR" name="iggResult">
-                  <label for="negPCR">Negative</label>
-                </td>
+              <tr>
+                <td class="col1"><label for="npv">Feedback:</label></td>
+                <td class="col2"><input id="feedbackInput" class="inputText" type="text" id="npv" name="npv" ></td>
               </tr>
             </table>
            </fieldset>
