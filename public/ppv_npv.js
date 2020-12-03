@@ -1,6 +1,8 @@
 // fieldname42: total score
-var num, dem, sens, spec, PPV;
-var sens_neg, spec_neg, NPV;
+var num, dem, sens, spec;
+var sens_neg, spec_neg;
+var PPV = NPV = null;
+
 function pcr_pos(score, week) {
     if (week == 1) {
         sens = 0.67;
@@ -213,7 +215,7 @@ $(".scoreField").change(function(){
     
     
 
-    if ($('#posPCR').prop("checked")) {
+    if ($('#posPCR').prop("checked") && $( "#testType option:selected" ).val() === "pcr") {
         pcr_result = "pos";
         igg_result = igm_result = null;
         $("#ppvResult").show();
@@ -221,7 +223,7 @@ $(".scoreField").change(function(){
         // testTypeText = "PCR Test";
         resultType = "Positive Predictive Value";
     }
-    else if ($('#negPCR').prop("checked")) {
+    else if ($('#negPCR').prop("checked") && $( "#testType option:selected" ).val() === "pcr") {
         pcr_result = "neg";
         igg_result = igm_result = null;
         $("#npvResult").show();
@@ -230,7 +232,7 @@ $(".scoreField").change(function(){
         resultType = "Negative Predictive Value";
     }
     
-    if ($('#posIgg').prop("checked")) {
+    if ($('#posIgg').prop("checked") && $( "#testType option:selected" ).val() === "igg") {
         igg_result = "pos";
         pcr_result = igm_result = null;
         $("#ppvResult").show();
@@ -238,7 +240,7 @@ $(".scoreField").change(function(){
         // testTypeText = "IgG ELISA Test";
         resultType = "Positive Predictive Value";
     }
-    else if ($('#negIgg').prop("checked")) {
+    else if ($('#negIgg').prop("checked") && $( "#testType option:selected" ).val() === "igg") {
         igg_result = "neg";
         pcr_result = igm_result = null;
         $("#npvResult").show();
@@ -247,7 +249,7 @@ $(".scoreField").change(function(){
         resultType = "Negative Predictive Value";
     }
     
-    if ($('#posIgm').prop("checked")) {
+    if ($('#posIgm').prop("checked") && $( "#testType option:selected" ).val() === "igm") {
         igm_result = "pos";
         igg_result = pcr_result = null;
         $("#ppvResult").show();
@@ -255,7 +257,7 @@ $(".scoreField").change(function(){
         // testTypeText = "IgM ELISA Test";
         resultType = "Positive Predictive Value";
     }
-    else if ($('#negIgm').prop("checked")) {
+    else if ($('#negIgm').prop("checked") && $( "#testType option:selected" ).val() === "igm") {
         igm_result = "neg";
         igg_result = pcr_result = null;
         $("#npvResult").show();
@@ -296,7 +298,8 @@ $(".scoreField").change(function(){
         console.log('TYPE_IGM-');
         npv = igm_neg(score, week);
     }
-
+    if (ppv === "NaN%") {ppv = 0;}
+    if (npv === "NaN%") {npv = 0;}
     $('input[name="ppv"]').val(ppv);
     $('input[name="npv"]').val(npv);
     if (ppv === undefined){
@@ -305,12 +308,10 @@ $(".scoreField").change(function(){
     else if (npv === undefined){
         predictiveValue = ppv;
     }
-    // var testTypeText, resultType, predictiveValue;
-    // testTypeText = $('input[name="testTypeHidden"]').val();
-    // resultType = $('input[name="resultTypeHidden"]').val();
-    // predictiveValue = $('input[name="ppv"]').val() + $('input[name="npv"]').val();
+    if (resultType === null){resultType = "";}
+    if (predictiveValue === undefined){predictiveValue = "";}
+    console.log("resultType: ", resultType, "predictiveValue: ", predictiveValue, "testResult: ", testResult);
     var testResult = testTypeText + " - " + resultType+ " - " + predictiveValue;
-    $('input[name="testResult"]').val(testResult);
-
+        $('input[name="testResult"]').val(testResult);
 });
 

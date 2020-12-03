@@ -5,7 +5,7 @@
 // fieldname106: score
 // fieldname144: Prevalence Score
 $(".scoreField").change(function(){
-    var symptomScore = exposureScore = radiographyScore = neutLympScore = prevalenceScore=0;
+    var symptomScore = exposureScore = radiographyScore = neutLympScore = prevalenceScore = 0;
 
     // Calculate symptomScore:
     if ($("#symptomCough").prop("checked")){
@@ -43,15 +43,14 @@ $(".scoreField").change(function(){
 
     // Calculate radiographyScore:
     radiographyScore = parseFloat($('#radiography option:selected').val());
-    // if ($('#radiography option:selected').val().length ==! 0){
-    // }
-
+    
     // Calculate prevalenceScore:
     prevalenceScore = 0;
 
     var total_score = symptomScore + exposureScore + radiographyScore + neutLympScore + prevalenceScore;
     console.log("symptomScore: ", symptomScore);
     console.log("exposureScore: ", exposureScore);
+    console.log("$('#radiography option:selected').val(): ", $('#radiography option:selected').val());
     console.log("radiographyScore: ", radiographyScore);
     console.log("neutLympScore: ", neutLympScore);
     console.log("prevalenceScore: ", prevalenceScore);

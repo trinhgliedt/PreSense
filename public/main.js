@@ -35,6 +35,9 @@ $('#tutorialLink').click(function(){
 });
 
 $('#testType').on('change', function() {
+  $('input[name="pcrResult"]').prop('checked', false);
+  $('input[name="iggResult"]').prop('checked', false);
+  $('input[name="igmResult"]').prop('checked', false);
     if ( this.value === 'pcr')
     {
         // console.log("in pcr");
@@ -66,10 +69,14 @@ $('#testType').on('change', function() {
     $(".goalIgm").hide();
     $("#ppvResult").hide();
     $("#npvResult").hide();
+    $("#my-slider").hide();
+    $("#testResult").hide();
     $('#testType option:eq(0)').prop('selected', true);
   });
   $('#postTest').click(function(){
     $(".goalTestType").show();
+    $("#my-slider").show();
+    $("#testResult").show();
   });
 
   $('#symptomNone').click(function(){
@@ -78,5 +85,14 @@ $('#testType').on('change', function() {
   });
   $('.hasSymptom').click(function(){
     $("#symptomNone").prop( "checked", false );
+
+  });
+
+  $('#resetButton').click(function(){
+    $(".goalTestType").hide();
+    $(".goalPCR").hide();
+    $(".goalIgg").hide();
+    $(".goalIgm").hide();
+    $(".hiddenField").hide();
 
   });

@@ -291,7 +291,7 @@
                 <td class="col1"><label for="radiography">Estimate % involvement with ground glass opacities or crazy-paving pattern:</label></td>
                 <td class="col2">
                   <select name="radiography" class="scoreField" id="radiography">
-                    <option value="pleaseSelect" disabled="disabled" selected="true" value="0" >Select an option</option>
+                    <option disabled="disabled" selected="true" value="0" >Select an option</option>
                     <option value="0">Normal Film</option>
                     <option value="10">CT &#60 25% GGO</option>
                     <option value="15">CT 25-50% GGO</option>
@@ -336,22 +336,20 @@
                 <td colspan="2">
                   <!------ Slider bar -------->
                   <div>
-                  <div id='my-slider'>Slider Bar</div>
+                  <div class="hiddenField" id='my-slider'>Slider Bar</div>
                 
                   </div>
-                  <!-- <input class="hiddenField" type="text" id="testType" name="testTypeHidden" disabled>
-                  <input class="hiddenField" type="text" id="resultType" name="resultTypeHidden" disabled> -->
-                  <input class="inputAsParagraph" type="text" id="testResult" name="testResult" disabled>
+                  <input class="inputAsParagraph hiddenField" type="text" id="testResult" name="testResult" disabled>
                 </td>  
               </tr>
-              <tr>
+              <!-- <tr>
                 <td colspan="2">
                   <section>
                     <h4>Considerations</h4>
                     <p></p>
                   </section>
                 </td>  
-              </tr>
+              </tr> -->
               
               <tr>
                 <td class="col1"><label for="npv">Feedback:</label></td>
@@ -383,6 +381,7 @@
       <script defer src="./totalScore.js"></script>
       <script defer src="./preTestProbability.js"></script>
       <script defer src="./ppv_npv.js"></script>
+      <script defer src="./sliderBar.js"></script>
       <!-- Firebase script -->
     </div>
   </body>

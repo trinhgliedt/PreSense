@@ -143,7 +143,7 @@ small {
     outline-style: none;
 }
 
-/* Beg of Slider bar */
+/* Beg of Slider bar for PPV */
 .slidecontainer {
     width: 100%;
 }
@@ -190,6 +190,54 @@ small {
 }
 /* End of Slider bar */
 
+/* Beg of Slider bar for NPV */
+.slidecontainer2 {
+    width: 100%;
+}
+
+.slider2 {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+    top: 25px;
+    -webkit-appearance: none;
+    height: 25px;
+    background: linear-gradient(to left,
+            #35a834 10%,
+            #ffd400 30%,
+            #ff6400 70%,
+            red 100%);
+    transition: opacity .2s;
+    border-radius: 20px;
+}
+
+.slider2::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 45px;
+    background: #000;
+    cursor: pointer;
+}
+
+.slider2::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #000;
+    cursor: pointer;
+}
+
+#demo {
+    text-align: center;
+    margin: 3vh;
+    font-size: 24px;
+}
+/* End of Slider bar for NPV */
+
+
 .hiddenField {
     display: none;
 }
@@ -200,4 +248,5 @@ small {
     background-color: none;
     font-size: x-large;
     text-align: center;
+    margin-top: 1.5em;
 }
