@@ -133,7 +133,7 @@ small {
 }
 
 #submitButton {
-    margin-left: 75%;
+    margin-left: 40%;
     background-image: linear-gradient(rgb(170, 170, 170), rgba(221, 221, 216, 0.781), rgb(170, 170, 170));
     font-weight: bold;
     
