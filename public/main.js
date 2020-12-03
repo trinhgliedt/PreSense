@@ -37,7 +37,7 @@ $('#tutorialLink').click(function(){
 $('#testType').on('change', function() {
     if ( this.value === 'pcr')
     {
-        console.log("in pcr");
+        // console.log("in pcr");
       $(".goalPCR").show();
       $(".goalIgg").hide();
       $(".goalIgm").hide();
@@ -45,7 +45,7 @@ $('#testType').on('change', function() {
     
     else if ( this.value === 'igg')
     {
-        console.log("in igg")
+        // console.log("in igg");
 
       $(".goalPCR").hide();
       $(".goalIgg").show();
@@ -53,7 +53,7 @@ $('#testType').on('change', function() {
     }
     else if ( this.value === 'igm')
     {
-        console.log("in igM");
+        // console.log("in igM");
       $(".goalPCR").hide();
       $(".goalIgg").hide();
       $(".goalIgm").show();
@@ -64,11 +64,12 @@ $('#testType').on('change', function() {
     $(".goalPCR").hide();
     $(".goalIgg").hide();
     $(".goalIgm").hide();
+    $("#ppvResult").hide();
+    $("#npvResult").hide();
     $('#testType option:eq(0)').prop('selected', true)
   });
   $('#postTest').click(function(){
     $(".goalTestType").show();
-
   });
 
   $('#symptomNone').click(function(){

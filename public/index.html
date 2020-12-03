@@ -149,28 +149,28 @@
                   <td class="col1"><label for="goal">Indicate the igG ELISA result:</td>
                   <td class="col2">
                     <input class="radio scoreField" type="radio" id="posIgg" name="iggResult">
-                    <label for="posPCR">Positive</label>
+                    <label for="posIgg">Positive</label>
                   </td>
                 </tr>
                 <tr class="goalIgg">
                   <td class="col1"></td>
                   <td class="col2">
                     <input class="radio scoreField" type="radio" id="negIgg" name="iggResult">
-                    <label for="negPCR">Negative</label>
+                    <label for="negIgg"">Negative</label>
                   </td>
                 </tr>
                 <tr class="goalIgm">
                   <td class="col1"><label for="goal">Indicate the igM ELISA result:</td>
                   <td class="col2">
                     <input class="radio scoreField" type="radio" id="posIgm" name="igmResult">
-                    <label for="posPCR">Positive</label>
+                    <label for="posIgm">Positive</label>
                   </td>
                 </tr>
                 <tr class="goalIgm">
                   <td class="col1"></td>
                   <td class="col2">
                     <input class="radio scoreField" type="radio" id="negIgm" name="igmResult">
-                    <label for="negPCR">Negative</label>
+                    <label for="negIgm">Negative</label>
                   </td>
                 </tr>
             </table>
@@ -324,11 +324,11 @@
                 <td class="col1"><label for="preTestProbability">Estimated Pre-Test Probability:</label></td>
                 <td class="col2"><input class="inputText" type="text" id="preTestProbability" name="preTestProbability" disabled></td>
               </tr>
-              <tr>
+              <tr class="hiddenField" id="ppvResult">
                 <td class="col1"><label for="ppv">Positive Predictive Value:</label></td>
                 <td class="col2"><input class="inputText" type="text" id="ppv" name="ppv" disabled></td>
               </tr>
-              <tr>
+              <tr class="hiddenField" id="npvResult">
                 <td class="col1"><label for="npv">Negative Predictive Value:</label></td>
                 <td class="col2"><input class="inputText" type="text" id="npv" name="npv" disabled></td>
               </tr>
@@ -353,7 +353,7 @@
               
               <tr>
                 <td class="col1"><label for="npv">Feedback:</label></td>
-                <td class="col2"><input id="feedbackInput" class="inputText" type="text" id="npv" name="npv" ></td>
+                <td class="col2"><input id="feedbackInput" class="inputText" type="text"  name="feedbackInput" ></td>
               </tr>
             </table>
            </fieldset>
@@ -380,8 +380,7 @@
       <script defer src="./neut_lymp_ratio.js"></script>
       <script defer src="./totalScore.js"></script>
       <script defer src="./preTestProbability.js"></script>
-      <script defer src="./ppv.js"></script>
-      <script defer src="./npv.js"></script>
+      <script defer src="./ppv_npv.js"></script>
       <!-- Firebase script -->
     </div>
   </body>
