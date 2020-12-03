@@ -134,42 +134,42 @@
                 <tr class="goalPCR">
                   <td class="col1"><label for="goal">Indicate the PCR result:</td>
                   <td class="col2">
-                    <input class="radio" type="radio" id="posPCR" name="pcrResult">
+                    <input class="radio scoreField" type="radio" id="posPCR" name="pcrResult">
                     <label for="posPCR">Positive</label>
                   </td>
                 </tr>
                 <tr class="goalPCR">
                   <td class="col1"></td>
                   <td class="col2">
-                    <input class="radio" type="radio" id="negPCR" name="pcrResult">
+                    <input class="radio scoreField" type="radio" id="negPCR" name="pcrResult">
                     <label for="negPCR">Negative</label>
                   </td>
                 </tr>
                 <tr class="goalIgg">
                   <td class="col1"><label for="goal">Indicate the igG ELISA result:</td>
                   <td class="col2">
-                    <input class="radio" type="radio" id="posPCR" name="iggResult">
+                    <input class="radio scoreField" type="radio" id="posIgg" name="iggResult">
                     <label for="posPCR">Positive</label>
                   </td>
                 </tr>
                 <tr class="goalIgg">
                   <td class="col1"></td>
                   <td class="col2">
-                    <input class="radio" type="radio" id="negPCR" name="iggResult">
+                    <input class="radio scoreField" type="radio" id="negIgg" name="iggResult">
                     <label for="negPCR">Negative</label>
                   </td>
                 </tr>
                 <tr class="goalIgm">
                   <td class="col1"><label for="goal">Indicate the igM ELISA result:</td>
                   <td class="col2">
-                    <input class="radio" type="radio" id="posPCR" name="iggResult">
+                    <input class="radio scoreField" type="radio" id="posIgm" name="igmResult">
                     <label for="posPCR">Positive</label>
                   </td>
                 </tr>
                 <tr class="goalIgm">
                   <td class="col1"></td>
                   <td class="col2">
-                    <input class="radio" type="radio" id="negPCR" name="iggResult">
+                    <input class="radio scoreField" type="radio" id="negIgm" name="igmResult">
                     <label for="negPCR">Negative</label>
                   </td>
                 </tr>
@@ -181,7 +181,11 @@
             <table>
               <tr>
                 <td class="col1"><label for="dateOfSymptoms">Date of symptoms (mm/dd/yyyy)<span style="color: red;">*</span>:</label></td>
-                <td class="col2"><input class="inputText" type="date" id="dateOfSymptoms" name="dateOfSymptoms" required></td>
+                <td class="col2"><input class="inputText scoreField" type="date" id="dateOfSymptoms" name="dateOfSymptoms" required></td>
+              </tr>
+              <tr class="hiddenField">
+                <td class="col1"><label for="symptomAgeInWeek">Symptom Age In Week:</label></td>
+                <td class="col2"><input class="inputText" type="number" id="symptomAgeInWeek" name="symptomAgeInWeek" disabled></td>
               </tr>
               <tr>
                 <td class="col1"><label for="patientAge">Patient's age<span style="color: red;">*</span>:</label></td>
@@ -273,7 +277,7 @@
                 <td class="col1"><label for="nLratio">Neutrophil / Lymphocyte Ratio:</label></td>
                 <td class="col2"><input class="inputText" type="text" id="nLratio" name="nLratio" disabled></td>
               </tr>
-              <tr id="neut_lym_score">
+              <tr class="hiddenField">
                 <td class="col1"><label for="score">Score:</label></td>
                 <td class="col2"><input class="inputText scoreField" type="text" id="score" name="score" disabled></td>
               </tr>
@@ -321,8 +325,12 @@
                 <td class="col2"><input class="inputText" type="text" id="preTestProbability" name="preTestProbability" disabled></td>
               </tr>
               <tr>
+                <td class="col1"><label for="ppv">Positive Predictive Value:</label></td>
+                <td class="col2"><input class="inputText" type="text" id="ppv" name="ppv" disabled></td>
+              </tr>
+              <tr>
                 <td class="col1"><label for="npv">Negative Predictive Value:</label></td>
-                <td class="col2"><input class="inputText" type="text" id="npv" name="npv" ></td>
+                <td class="col2"><input class="inputText" type="text" id="npv" name="npv" disabled></td>
               </tr>
               <tr>
                 <td colspan="2">
@@ -372,6 +380,8 @@
       <script defer src="./neut_lymp_ratio.js"></script>
       <script defer src="./totalScore.js"></script>
       <script defer src="./preTestProbability.js"></script>
+      <script defer src="./ppv.js"></script>
+      <script defer src="./npv.js"></script>
       <!-- Firebase script -->
     </div>
   </body>
