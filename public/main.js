@@ -70,13 +70,13 @@ $('#testType').on('change', function() {
     $("#ppvResult").hide();
     $("#npvResult").hide();
     $("#my-slider").hide();
-    $("#testResult").hide();
+    $("#testResultDisplay").hide();
     $('#testType option:eq(0)').prop('selected', true);
   });
   $('#postTest').click(function(){
     $(".goalTestType").show();
     $("#my-slider").show();
-    $("#testResult").show();
+    $("#testResultDisplay").show();
   });
 
   $('#symptomNone').click(function(){

@@ -72,7 +72,7 @@
                 <label for="phone">Phone<span style="color: red;">*</span>:</label>
               </td>
               <td class="col2">
-                <input class="inputText" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="###-##-####">
+                <input class="inputText" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="###-###-####">
               </td>
              </tr>
              <tr>
@@ -91,7 +91,7 @@
                 <input class="inputText" type="text" id="zipcode" name="zipcode" required>
               </td>
              </tr>
-             <tr>
+             <tr class="hiddenField">
               <td class="col1">
                 <label for="fips">FIPs:</label>
               </td>
@@ -312,7 +312,7 @@
           <fieldset>
             <legend>Provider:</legend>
             <table>
-              <tr>
+              <tr class="hiddenField">
                 <td class="col1"><label for="prevalence">Prevalence (Covidcast):</label></td>
                 <td class="col2"><input class="inputText scoreField" type="text" id="prevalence" name="prevalence" disabled></td>
               </tr>
@@ -337,9 +337,14 @@
                   <!------ Slider bar -------->
                   <div>
                   <div class="hiddenField" id='my-slider'>Slider Bar</div>
-                
-                  </div>
-                  <input class="inputAsParagraph hiddenField" type="text" id="testResult" name="testResult" disabled>
+                </td>  
+              </tr>
+              <tr>
+              <tr>
+                <td colspan="2">
+                  <input class="inputAsParagraph" type="text" id="testResult" name="testResult" disabled>
+
+                  <h3 id="testResultDisplay"></h3>
                 </td>  
               </tr>
               <!-- <tr>

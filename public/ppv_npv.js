@@ -313,5 +313,6 @@ $(".scoreField").change(function(){
     console.log("resultType: ", resultType, "predictiveValue: ", predictiveValue, "testResult: ", testResult);
     var testResult = testTypeText + " - " + resultType+ " - " + predictiveValue;
         $('input[name="testResult"]').val(testResult);
+        document.getElementById("testResultDisplay").innerHTML = testResult;
 });
 
