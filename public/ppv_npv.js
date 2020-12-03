@@ -22,7 +22,7 @@ function pcr_pos(score, week) {
     num = sens * score;
     dem = num + ((1 - spec) * (1 - score));
     PPV = num / dem;
-    ppvRound = PPV.toPrecision(4)*100 + "%"
+    ppvRound = (PPV*100).toFixed(2) + "%"
     console.log("POST-PCR123POS:", "week:", week, "spec:", spec, "sens:", sens, "score:", score, "num:", num, "dem:", dem, "ppvRound:", ppvRound);
     return ppvRound;
 }
@@ -48,7 +48,7 @@ function igG_elisa_pos(score, week) {
     num = sens * score;
     dem = num + ((1 - spec) * (1 - score));
     PPV = num / dem;
-    ppvRound = PPV.toPrecision(4)*100 + "%"
+    ppvRound = (PPV*100).toFixed(2) + "%"
     console.log("POST-PCR123POS:", "week:", week, "spec:", spec, "sens:", sens, "score:", score, "num:", num, "dem:", dem, "ppvRound:", ppvRound);
     return ppvRound;
 }
@@ -74,7 +74,7 @@ function igM_elisa_pos(score, week) {
     num = sens * score;
     dem = num + ((1 - spec) * (1 - score));
     PPV = num / dem;
-    ppvRound = PPV.toPrecision(4)*100 + "%"
+    ppvRound = (PPV*100).toFixed(2) + "%"
     console.log("POST-PCR123POS:", "week:", week, "spec:", spec, "sens:", sens, "score:", score, "num:", num, "dem:", dem, "ppvRound:", ppvRound);
     return ppvRound;
 }
@@ -98,7 +98,7 @@ function pcr_neg(score_neg, week) {
     }
     console.log("PRE-PCR123NEG spec_neg", spec_neg, "sens_neg", sens_neg, "score_neg", score_neg);
     NPV = (spec_neg * (1 - score_neg)) / (((1 - sens_neg) * score_neg) + (spec_neg * (1 - score_neg)));
-    npvRound = NPV.toPrecision(4)*100 + "%";
+    npvRound = (NPV*100).toFixed(2) + "%";
     console.log("POST-PCR123NEG:", npvRound);
     return npvRound;
 }
@@ -122,7 +122,7 @@ function igg_neg(score_neg, week) {
     }
     console.log("PRE-iggNEG spec_neg", spec_neg, "sens_neg", sens_neg, "score_neg", score_neg);
     NPV = (spec_neg * (1 - score_neg)) / (((1 - sens_neg) * score_neg) + (spec_neg * (1 - score_neg)));
-    npvRound = NPV.toPrecision(4)*100 + "%";
+    npvRound = (NPV*100).toFixed(2) + "%";
     console.log("POST-iggNEG:", NPV);
     return npvRound;
 }
@@ -146,7 +146,8 @@ function igm_neg(score_neg, week) {
     }
     console.log("PRE-igmNEG spec_neg", spec_neg, "sens_neg", sens_neg, "score_neg", score_neg);
     NPV = (spec_neg * (1 - score_neg)) / (((1 - sens_neg) * score_neg) + (spec_neg * (1 - score_neg)));
-    npvRound = NPV.toPrecision(4)*100 + "%";
+    // npvRound = (NPV*100).toFixed(2) + "%";
+    npvRound = (NPV*100).toFixed(2) + "%";
     console.log("POST-igmNEG:", NPV);
     return npvRound;
 }
@@ -190,21 +191,43 @@ $("#dateOfSymptoms").change(function(){
     console.log("symptomAgeInWeek: ", symptomAgeInWeek);
     $('input[name="symptomAgeInWeek"]').val(symptomAgeInWeek);
 });
+var testTypeText, resultType, predictiveValue = null;
+$("#testType").change(function () {
+    resultType = null;
+    predictiveValue = null;
+    var status = this.value;
+    if (status === "pcr"){
+        testTypeText = "PCR Test";
+    }
+    if (status === "igg"){
+        testTypeText = "IgG ELISA Test";
+    }
+    if (status === "igm"){
+        testTypeText = "IgM ELISA Test";
+    }
+});
 $(".scoreField").change(function(){
     var week = $('input[name="symptomAgeInWeek"]').val();
     var score = control(parseFloat($('input[name="totalScore"]').val()));
     var pcr_result = igg_result = igm_result = null;
+    
+    
+
     if ($('#posPCR').prop("checked")) {
         pcr_result = "pos";
         igg_result = igm_result = null;
         $("#ppvResult").show();
         $("#npvResult").hide();
+        // testTypeText = "PCR Test";
+        resultType = "Positive Predictive Value";
     }
     else if ($('#negPCR').prop("checked")) {
         pcr_result = "neg";
         igg_result = igm_result = null;
         $("#npvResult").show();
         $("#ppvResult").hide();
+        // testTypeText = "PCR Test";
+        resultType = "Negative Predictive Value";
     }
     
     if ($('#posIgg').prop("checked")) {
@@ -212,12 +235,16 @@ $(".scoreField").change(function(){
         pcr_result = igm_result = null;
         $("#ppvResult").show();
         $("#npvResult").hide();
+        // testTypeText = "IgG ELISA Test";
+        resultType = "Positive Predictive Value";
     }
     else if ($('#negIgg').prop("checked")) {
         igg_result = "neg";
         pcr_result = igm_result = null;
         $("#npvResult").show();
         $("#ppvResult").hide();
+        // testTypeText = "IgG ELISA Test";
+        resultType = "Negative Predictive Value";
     }
     
     if ($('#posIgm').prop("checked")) {
@@ -225,12 +252,16 @@ $(".scoreField").change(function(){
         igg_result = pcr_result = null;
         $("#ppvResult").show();
         $("#npvResult").hide();
+        // testTypeText = "IgM ELISA Test";
+        resultType = "Positive Predictive Value";
     }
     else if ($('#negIgm').prop("checked")) {
         igm_result = "neg";
         igg_result = pcr_result = null;
         $("#npvResult").show();
         $("#ppvResult").hide();
+        // testTypeText = "IgM ELISA Test";
+        resultType = "Negative Predictive Value";
     }
     console.log('pcr_res:', pcr_result);
     console.log('igm_res:', igm_result);
@@ -268,6 +299,18 @@ $(".scoreField").change(function(){
 
     $('input[name="ppv"]').val(ppv);
     $('input[name="npv"]').val(npv);
+    if (ppv === undefined){
+        predictiveValue = npv;
+    }
+    else if (npv === undefined){
+        predictiveValue = ppv;
+    }
+    // var testTypeText, resultType, predictiveValue;
+    // testTypeText = $('input[name="testTypeHidden"]').val();
+    // resultType = $('input[name="resultTypeHidden"]').val();
+    // predictiveValue = $('input[name="ppv"]').val() + $('input[name="npv"]').val();
+    var testResult = testTypeText + " - " + resultType+ " - " + predictiveValue;
+    $('input[name="testResult"]').val(testResult);
 
 });
 

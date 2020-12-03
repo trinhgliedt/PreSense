@@ -193,3 +193,11 @@ small {
 .hiddenField {
     display: none;
 }
+
+.inputAsParagraph {
+    width: 100%;
+    border: none;
+    background-color: none;
+    font-size: x-large;
+    text-align: center;
+}

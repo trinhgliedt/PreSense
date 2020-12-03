@@ -122,11 +122,11 @@
                 <tr class="goalTestType">
                   <td class="col1"><label for="goal">Please select a test type:</label></td>
                   <td class="col2">
-                    <select name="testType" id="testType">
+                    <select class="scoreField" name="testType" id="testType">
                       <option value="pleaseSelect" disabled="disabled" selected="true" >Select an option</option>
-                      <option value="pcr">PCR</option>
-                      <option value="igg">igG ELISA</option>
-                      <option value="igm">igM ELISA</option>
+                      <option  value="pcr">PCR</option>
+                      <option  value="igg">igG ELISA</option>
+                      <option  value="igm">igM ELISA</option>
                     </select>
                   </td>
                 </tr>
@@ -339,7 +339,9 @@
                   <div id='my-slider'>Slider Bar</div>
                 
                   </div>
-                  <p>Test result</p>
+                  <!-- <input class="hiddenField" type="text" id="testType" name="testTypeHidden" disabled>
+                  <input class="hiddenField" type="text" id="resultType" name="resultTypeHidden" disabled> -->
+                  <input class="inputAsParagraph" type="text" id="testResult" name="testResult" disabled>
                 </td>  
               </tr>
               <tr>

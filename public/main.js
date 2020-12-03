@@ -66,7 +66,7 @@ $('#testType').on('change', function() {
     $(".goalIgm").hide();
     $("#ppvResult").hide();
     $("#npvResult").hide();
-    $('#testType option:eq(0)').prop('selected', true)
+    $('#testType option:eq(0)').prop('selected', true);
   });
   $('#postTest').click(function(){
     $(".goalTestType").show();
