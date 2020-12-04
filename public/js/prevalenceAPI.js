@@ -1,6 +1,26 @@
+// ------------ Lookup fips
+const db = firebase.database();
+var fips = userZip = null;
+$('#zipcode').on('change', function() { 
+    db.ref("zipToFips").on("value", function(snapshot){
+        userZip = $('input[name="zipcode"]').val();
+        fips = snapshot.val()[userZip];
+        $('input[name="fips"]').val(fips);
+        console.log("fips: ", fips);
+        updatePrevalence();
+    }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
+});
 
+// -------------- Update prevalence
 var prevalenceScore = 0;
 $('.prevalenceField').on('change', function() { 
+    updatePrevalence();
+});
+
+
+function updatePrevalence(){
     var dateStr, symptomDate = geocode = prevalence =  null;
     dateStr = $('input[name="dateOfSymptoms"]').val();
     // dateStr: 2020-11-03
@@ -42,6 +62,9 @@ $('.prevalenceField').on('change', function() {
         $('input[name="prevalence"]').val(null);
 	}
 	console.log('prevalence: ', prevalence, "prevalenceScore: ", prevalenceScore);
+};
+$('.prevalenceField').on('change', function() { 
+    updatePrevalence();
 
 });
 

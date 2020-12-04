@@ -97,6 +97,7 @@ $('#testType').on('change', function() {
     $(".goalIgg").hide();
     $(".goalIgm").hide();
     $(".hiddenField").hide();
+    $("html, body").animate({ scrollTop: 0 }, "slow");
 
   });
 
