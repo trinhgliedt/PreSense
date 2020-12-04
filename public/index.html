@@ -84,22 +84,7 @@
                 <input class="inputText" type="text" id="organization" name="organization" required>
               </td>
              </tr>
-             <tr>
-              <td class="col1">
-                <label for="zipcode">Zip Code<span style="color: red;">*</span>:</label>
-              </td>
-              <td class="col2">
-                <input class="inputText" type="text" id="zipcode" name="zipcode" required maxlength="5">
-              </td>
-             </tr>
-             <tr class="hiddenField1">
-              <td class="col1">
-                <label for="fips">FIPs:</label>
-              </td>
-              <td class="col2">
-                <input class="inputText prevalenceField" type="text" id="fips" name="fips" disabled>
-              </td>
-             </tr>
+             
            </table>
           </fieldset>
           <!---------------- Goal ---------------->
@@ -192,6 +177,22 @@
                 <td class="col1"><label for="patientAge">Patient's age<span style="color: red;">*</span>:</label></td>
                 <td class="col2"><input class="inputText" type="number" id="patientAge" name="patientAge" min="0" max="120" required></td>
               </tr>
+              <tr>
+                <td class="col1">
+                  <label for="zipcode">Zip Code<span style="color: red;">*</span>:</label>
+                </td>
+                <td class="col2">
+                  <input class="inputText" type="text" id="zipcode" name="zipcode" required maxlength="5">
+                </td>
+               </tr>
+               <tr class="hiddenField1">
+                <td class="col1">
+                  <label for="fips">FIPs:</label>
+                </td>
+                <td class="col2">
+                  <input class="inputText prevalenceField" type="text" id="fips" name="fips" disabled>
+                </td>
+               </tr>
               <!-- Beg of Symptoms -->
               <tr class="">
                 <td class="col1 formSection"><label for="symptom">Symptoms (check all that apply)<span style="color: red;">*</span>:</label></td>
@@ -363,7 +364,7 @@
               
               <tr>
                 <td class="col1"><label for="npv">Feedback:</label></td>
-                <td class="col2"><input id="feedbackInput" class="inputText" type="text"  name="feedbackInput" ></td>
+                <td class="col2"><textarea id="feedbackInput" class="inputText" type="text" rows="4" cols="50"></textarea></td>
               </tr>
             </table>
            </fieldset>
@@ -388,7 +389,7 @@
       <!-- JQuery script -->
       <script defer src="./js/main.js"></script>
       <script defer src="./js/neut_lymp_ratio.js"></script>
-      <script defer src="./js/totalScore.js"></script>
+      <!-- <script defer src="./js/totalScore.js"></script> -->
       <script defer src="./js/preTestProbability.js"></script>
       <script defer src="./js/ppv_npv.js"></script>
       <script defer src="./js/sliderBar.js"></script>

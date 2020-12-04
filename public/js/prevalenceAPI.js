@@ -60,6 +60,7 @@ function updatePrevalence(){
 	} else {
         console.log('date or geocode not available');
         $('input[name="prevalence"]').val(null);
+        prevalenceScore = 0;
 	}
 	console.log('prevalence: ', prevalence, "prevalenceScore: ", prevalenceScore);
 };
@@ -67,6 +68,11 @@ $('.prevalenceField').on('change', function() {
     updatePrevalence();
 
 });
+
+$(".scoreField").change(function(){ 
+    updateScore();
+})
+
 
 function updateScore(){
 	var symptomScore = exposureScore = radiographyScore = neutLympScore = 0;
