@@ -4,6 +4,7 @@
 // fieldname134: Exposure
 // fieldname106: score
 // fieldname144: Prevalence Score
+
 $(".scoreField").change(function(){
     var symptomScore = exposureScore = radiographyScore = neutLympScore = prevalenceScore = 0;
 
@@ -45,15 +46,10 @@ $(".scoreField").change(function(){
     radiographyScore = parseFloat($('#radiography option:selected').val());
     
     // Calculate prevalenceScore:
-    prevalenceScore = 0;
+    prevalenceScore = parseInt($('input[name="prevalenceScore"]').val());
 
     var total_score = symptomScore + exposureScore + radiographyScore + neutLympScore + prevalenceScore;
-    console.log("symptomScore: ", symptomScore);
-    console.log("exposureScore: ", exposureScore);
-    console.log("$('#radiography option:selected').val(): ", $('#radiography option:selected').val());
-    console.log("radiographyScore: ", radiographyScore);
-    console.log("neutLympScore: ", neutLympScore);
-    console.log("prevalenceScore: ", prevalenceScore);
+    console.log("symptomScore: ", symptomScore, "exposureScore: ", exposureScore, "radiographyScore: ", radiographyScore, "neutLympScore: ", neutLympScore, "prevalenceScore: ", prevalenceScore, "total_score:", total_score);
 
     $('input[name="totalScore"]').val(total_score);
 });

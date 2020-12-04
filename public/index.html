@@ -89,7 +89,7 @@
                 <label for="zipcode">Zip Code<span style="color: red;">*</span>:</label>
               </td>
               <td class="col2">
-                <input class="inputText" type="text" id="zipcode" name="zipcode" required>
+                <input class="inputText" type="text" id="zipcode" name="zipcode" required maxlength="5">
               </td>
              </tr>
              <tr class="hiddenField1">
@@ -97,7 +97,7 @@
                 <label for="fips">FIPs:</label>
               </td>
               <td class="col2">
-                <input class="inputText" type="text" id="fips" name="fips" disabled>
+                <input class="inputText prevalenceField" type="text" id="fips" name="fips" disabled>
               </td>
              </tr>
            </table>
@@ -182,7 +182,7 @@
             <table>
               <tr>
                 <td class="col1"><label for="dateOfSymptoms">Date of symptoms (mm/dd/yyyy)<span style="color: red;">*</span>:</label></td>
-                <td class="col2"><input class="inputText scoreField" type="date" id="dateOfSymptoms" name="dateOfSymptoms" required></td>
+                <td class="col2"><input class="inputText scoreField prevalenceField" type="date" id="dateOfSymptoms" name="dateOfSymptoms" required></td>
               </tr>
               <tr class="hiddenField">
                 <td class="col1"><label for="symptomAgeInWeek">Symptom Age In Week:</label></td>
@@ -315,7 +315,11 @@
             <table>
               <tr class="hiddenField1">
                 <td class="col1"><label for="prevalence">Prevalence (Covidcast):</label></td>
-                <td class="col2"><input class="inputText scoreField" type="text" id="prevalence" name="prevalence" disabled></td>
+                <td class="col2"><input class="inputText scoreField" type="number" id="prevalence" name="prevalence" disabled></td>
+              </tr>
+              <tr class="hiddenField1">
+                <td class="col1"><label for="prevalenceScore">Prevalence Score:</label></td>
+                <td class="col2"><input class="inputText scoreField" type="number" id="prevalenceScore" name="prevalenceScore" disabled></td>
               </tr>
               <tr>
                 <td class="col1"><label for="totalScore">Total Score:</label></td>
@@ -345,7 +349,7 @@
                 <td colspan="2">
                   <input class="inputAsParagraph" type="text" id="testResult" name="testResult" disabled>
 
-                  <h3 id="testResultDisplay"></h3>
+                  <h3 class="hiddenField" id="testResultDisplay"></h3>
                 </td>  
               </tr>
               <!-- <tr>
@@ -389,6 +393,7 @@
       <script defer src="./ppv_npv.js"></script>
       <script defer src="./sliderBar.js"></script>
       <script defer src="./zipToFips.js"></script>
+      <script defer src="./prevalenceAPI.js"></script>
       <!-- Firebase script -->
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
@@ -397,19 +402,18 @@
       <!-- TODO: Add SDKs for Firebase products that you want to use
           https://firebase.google.com/docs/web/setup#available-libraries -->
       <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
-
       <script>
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        var firebaseConfig = {
-          apiKey: "AIzaSyAOYNb0Vsadr4y3Op8rK247HbISVllqqxw",
-          authDomain: "presense-cca11.firebaseapp.com",
-          databaseURL: "https://presense-cca11.firebaseio.com",
-          projectId: "presense-cca11",
-          storageBucket: "presense-cca11.appspot.com",
-          messagingSenderId: "263160703029",
-          appId: "1:263160703029:web:09809d4d63ff5eb11ea97c",
-          measurementId: "G-JHB25XTPGV"
+    var firebaseConfig = {
+        apiKey: "AIzaSyAOYNb0Vsadr4y3Op8rK247HbISVllqqxw",
+        authDomain: "presense-cca11.firebaseapp.com",
+        databaseURL: "https://presense-cca11.firebaseio.com",
+        projectId: "presense-cca11",
+        storageBucket: "presense-cca11.appspot.com",
+        messagingSenderId: "263160703029",
+        appId: "1:263160703029:web:09809d4d63ff5eb11ea97c",
+        measurementId: "G-JHB25XTPGV"
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
