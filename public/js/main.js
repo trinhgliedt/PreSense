@@ -72,11 +72,14 @@ $('#testType').on('change', function() {
     $("#my-slider").hide();
     $("#testResultDisplay").hide();
     $('#testType option:eq(0)').prop('selected', true);
+    $("#considerationSection").hide();
+
   });
   $('#postTest').click(function(){
     $(".goalTestType").show();
     $("#my-slider").show();
     $("#testResultDisplay").show();
+    $("#considerationSection").show();
   });
 
   $('#symptomNone').click(function(){

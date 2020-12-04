@@ -17,7 +17,7 @@ $('.prevalenceField').on('change', function() {
 				var res = JSON.parse(this.responseText);
 				console.log('value: ', res);
 				if (res['result'] === 1) {
-					prevalence = res['epidata'][0]['value'];
+					prevalence = res['epidata'][0]['value'].toFixed(4);
 					$('input[name="prevalence"]').val(prevalence);
 					prevalenceScore = Math.round(prevalence*10).toFixed(0);
                     $('input[name="prevalenceScore"]').val(prevalenceScore);

@@ -269,35 +269,95 @@ $(".scoreField").change(function(){
     console.log('igm_res:', igm_result);
     console.log('igg_res:', igg_result);
     var ppv, npv;
+    var ppvVal, npvVal;
+    var consideration = null;
     if (pcr_result === "pos") {
         console.log('TYPE_PCR+');
         ppv = pcr_pos(score, week);
+        ppvVal = parseFloat(ppv.slice(0,6));
+        if (ppvVal >= 66) {
+            console.log('PCR Pos - PPV High');
+            consideration = 'This positive test is likely to reflect actual infection with SARS CoV2.';
+        } else if (ppvVal < 66) {
+            console.log('invalid test result');
+            consideration ='';
+        }   
     }
-
     else if (pcr_result === "neg") {
         console.log('TYPE_PCR-');
         npv = pcr_neg(score, week);
+        npvVal = parseFloat(npv.slice(0,6));
+        if (npvVal <= 66) {
+            console.log('PCR Neg - NPV Low');
+            consideration = 'The NPV of this test is low.  If you still suspect COVID-19, consider retesting for virus and/or antibody (if the patient has been symptomatic for more than 1 week).';
+        } else if (npvVal <= 90) {
+            console.log('PCR Neg - NPV Intermediate');
+            consideration ='The NPV of the test is intermediate. If you still suspect COVID-19, consider retesting for virus and/or antibody (if the patient has been symptomatic for more than 1 week).';
+        } else if (npvVal > 90){
+            console.log('PCR Neg - NPV High');
+            consideration ='The NPV of the test is relatively high. This negative result is likely to reflect the true absence of virus. If you still suspect COVID-19, consider retesting for virus and/or antibody (if the patient has been symptomatic for more than 1 week).';
+        }
+
     }
 
     if (igg_result === "pos") {
         console.log('TYPE_IGG+');
         ppv = igG_elisa_pos(score, week);
+        ppvVal = parseFloat(ppv.slice(0,6));
+        if (ppvVal <= 66) {
+            console.log('IgG Pos - PPV Low');
+            consideration = 'The positive antibody test may not reflect current or prior COVID-19. Reconsider diagnosis and retesting. False positive antibodies can be the result of prior Coronavirus infections. Some people have also had unrecognized COVID-19.';
+        }
+        else if (ppvVal > 66) {
+            console.log('IgG Pos - PPV High');
+            consideration ='The positive antibody likely reflects prior or current COVID-19.';
+        }   
     }
 
     else if (igg_result === "neg") {
         console.log('TYPE_IGG-');
         npv = igg_neg(score, week);
+        npvVal = parseFloat(npv.slice(0,6));
+        if (npvVal <= 90) {
+            console.log('Igg Neg - NPV Low');
+            consideration = 'The NPV of the antibody test is relatively low. This may not be a reliable indicator that the patient does not have COVID-19, either because of timing relative to symptoms or other reasons.';
+        } else if (npvVal > 90){
+            console.log('Igg Neg - NPV High');
+            consideration = 'The NPV of the antibody test is high. The absence of antibodies may reflect no current or prior COVID – 19, or antibody levels that have decreased since infection. If you still suspect COVID-19, consider ID consultation.';
+        }
     }
 
     if (igm_result === "pos") {
         console.log('TYPE_IGM+');
         ppv = igM_elisa_pos(score, week);
+        ppvVal = parseFloat(ppv.slice(0,6));
+        if (ppvVal <= 66) {
+            console.log('IgM Pos - PPV Low');
+            consideration = 'The positive antibody test may not reflect current or prior COVID-19. Reconsider diagnosis and retesting. False positive antibodies can be the result of prior Coronavirus infections. Some people have also had unrecognized COVID-19.';
+        }
+        else if (ppvVal > 66){
+            console.log('IgM Pos - PPV High');
+            consideration ='The positive antibody likely reflects prior or current COVID-19.';
+        }   
     }
 
     else if (igm_result === "neg") {
         console.log('TYPE_IGM-');
         npv = igm_neg(score, week);
+        npvVal = parseFloat(npv.slice(0,6));
+        if (npvVal <= 90) {
+            console.log('IgM Neg - NPV Low');
+            consideration = 'The NPV of the antibody test is relatively low. This may not be a reliable indicator that the patient does not have COVID-19, either because of timing relative to symptoms or other reasons.';
+        } else if (npvVal > 90){
+            console.log('IgM Neg - NPV High');
+            consideration = 'The NPV of the antibody test is high. The absence of antibodies may reflect no current or prior COVID – 19, or antibody levels that have decreased since infection. If you still suspect COVID-19, consider ID consultation.';
+        }
     }
+    $('input[name="testResult"]').val(testResult);
+    console.log("npvVal:", npvVal, "ppvVal:", ppvVal, "consideration:", consideration);
+    document.getElementById("consideration").innerHTML = consideration;
+
+
     if (ppv === "NaN%") {ppv = 0;}
     if (npv === "NaN%") {npv = 0;}
     $('input[name="ppv"]').val(ppv);

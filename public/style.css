@@ -113,9 +113,19 @@ select {
 #radiography {
     margin-bottom: 0;
 }
+a {
+    display: block;
+    text-decoration: none;
+    font-size: smaller;
+    text-align: center;
+}
 small {
     margin-top: 0;
-    font-style: italic;
+}
+
+#disclaimer {
+    font-size: smaller;
+
 }
 
 #resetButton, #submitButton {
@@ -192,7 +202,7 @@ small {
 /* End of Slider bar */
 
 /* Beg of Slider bar for NPV */
-.slidecontainer2 {
+/* .slidecontainer2 {
     width: 100%;
 }
 
@@ -235,7 +245,7 @@ small {
     text-align: center;
     margin: 3vh;
     font-size: 24px;
-}
+} */
 /* End of Slider bar for NPV */
 
 
@@ -261,4 +271,23 @@ small {
 
 .center {
     text-align: center;
+}
+
+section {
+    border-radius: 3px;
+    border: 1px solid rgba(184, 182, 182, 0.815);
+    margin-top: 0.3em;
+    z-index: 1;
+    padding: 0 0.7em;
+    margin-bottom: 0.5em;
+
+}
+#consTittle {
+    display: block;
+    text-align: center;
+    margin-top: 0.7em;
+    margin-bottom: 0;
+}
+.bold {
+    font-weight: bold;
 }

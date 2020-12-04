@@ -29,17 +29,17 @@
       <!---------------- About ---------------->
       <div id="about" class="content">
         <p>Diagnosis of COVID-19 relies on detection of virus, in the form of nucleic acid or antigen, and/or detection of antibodies to the virus. These are detected temporally after infection and development of symptoms (Figure).</p>
-        <img src="./images/covid_test.png" width="98%" alt="Covid test">
-        <small class="center">Chart: The rise and fall of the virus in the airways and antibodies in the blood for 21 days after exposure to infection (Interpreting Covid-19 Test Results: A Bayesian Approach)</small>
+        <a href="https://medium.com/@Bob_Wachter/interpreting-covid-19-test-results-a-bayesian-approach-df058dad2ade" target="_blank"><img src="./images/covid_test.png" width="98%" alt="Covid test"></a>
+        <a href="https://medium.com/@Bob_Wachter/interpreting-covid-19-test-results-a-bayesian-approach-df058dad2ade" target="_blank"><small id="chart">Chart: The rise and fall of the virus in the airways and antibodies in the blood for 21 days after exposure to infection (Interpreting Covid-19 Test Results: A Bayesian Approach).</small></a>
         <p>Detection of virus with nucleic acid amplification testing (NAAT) or antigen is optimal early in the course of disease. Testing too late decreases sensitivity. However, antibodies appear later.</p>
-        <p>While tests are reported as ‘positive’ and ‘negative,’ results need to be interpreted in context to determine the probability that a diagnostic test result is a correct indicator of COVID-19. This is a function of two things:</p>
+        <p>While tests are reported as ‘positive’ and ‘negative’, results need to be interpreted in context to determine the probability that a diagnostic test result is a correct indicator of COVID-19. This is a function of two things:</p>
         <ol>
           <li>How good is the test? This depends on analytic sensitivity and specificity, and timing relative to symptoms; and</li>
           <li>How likely is it that someone has the disease? This is ‘pre-test probability,’ which is dependent on exposure (prevalence) and signs and symptoms of disease.</li>
         </ol>
         <p>According to Bayes Theorem, output is thus reported as negative predictive value (NPV) – how likely a negative test is to tell you that the patient really does not have COVID-19, and positive predictive value (PPV) – how likely a positive test tells you that the patient does have COVID-19.</p>
         <p>The tool does the math to generate post-test probabilities and offers diagnostic suggestions.</p>
-        <p>DISCLAIMER:<small>PreSense is an algorithmic tool ("Algorithm") developed by faculty at the Johns Hopkins University School of Medicine and Coding DoJo. The Algorithm is not an FDA-registered clinical decision support tool and has not been reviewed or approved for any use-including diagnosis or treatment of disease or other conditions, including Covid-19-by the FDA. The Johns Hopkins University and The Johns Hopkins Health System, Inc. (collectively, "Johns Hopkins") are making the Algorithm publicly available for academic and research use only. The Algorithm does not replace the independent clinical judgment of healthcare professionals or the performance of any clinical assessment. The Algorithm is not intended for the diagnosis or treatment of any disease or condition, including Covid-19 in individual patients. Johns Hopkins hereby disclaims any and all representations and warranties regarding the Algorithm, including warranties of fitness for use in clinical decision making and warranties that the Algorithm works as intended, is clinically safe, does not infringe third party intellectual property rights, and/or is free from defects and bugs.</small></p>
+        <p id="disclaimer">DISCLAIMER:<small>PreSense is an algorithmic tool ("Algorithm") developed by faculty at the Johns Hopkins University School of Medicine and Coding DoJo. The Algorithm is not an FDA-registered clinical decision support tool and has not been reviewed or approved for any use-including diagnosis or treatment of disease or other conditions, including Covid-19-by the FDA. The Johns Hopkins University and The Johns Hopkins Health System, Inc. (collectively, "Johns Hopkins") are making the Algorithm publicly available for academic and research use only. The Algorithm does not replace the independent clinical judgment of healthcare professionals or the performance of any clinical assessment. The Algorithm is not intended for the diagnosis or treatment of any disease or condition, including Covid-19 in individual patients. Johns Hopkins hereby disclaims any and all representations and warranties regarding the Algorithm, including warranties of fitness for use in clinical decision making and warranties that the Algorithm works as intended, is clinically safe, does not infringe third party intellectual property rights, and/or is free from defects and bugs.</small></p>
       </div>
       <!---------------- Tool ---------------->
       <div id="tool" style="display:none" class="content">
@@ -73,7 +73,7 @@
                 <label for="phone">Phone<span style="color: red;">*</span>:</label>
               </td>
               <td class="col2">
-                <input class="inputText" type="tel" id="phone" name="phone" required placeholder="###-###-####">
+                <input class="inputText" type="tel" id="phone" name="phone" required >
               </td>
              </tr>
              <tr>
@@ -110,14 +110,14 @@
                 <td class="col1"><label for="goal">Please make a selection<span style="color: red;">*</span>:</label></td>
                 <td class="col2">
                   <input class="radio" type="radio" id="preTest" name="testGoal">
-                  <label for="preTest">Determine the diagnostic pre-test probability of COVID-19 with clinical presentation (no testing available).</label>
+                  <label for="preTest">Determine the diagnostic <span class="bold">pre-test </span>probability of COVID-19 with clinical presentation (no testing available).</label>
                 </td>
               </tr>
               <tr>
                 <td class="col1"></td>
                 <td class="col2">
                   <input class="radio" type="radio" id="postTest" name="testGoal">
-                  <label for="postTest">Determine the diagnostic post-test probabilities of existing or planned SARS-CoV2 test results.</label>
+                  <label for="postTest">Determine the diagnostic <span class="bold">post-test </span>probabilities of existing or planned SARS-CoV2 test results.</label>
                 </td>
               </tr>
                 <tr class="goalTestType">
@@ -352,14 +352,14 @@
                   <h3 class="hiddenField" id="testResultDisplay"></h3>
                 </td>  
               </tr>
-              <!-- <tr>
+              <tr id = "considerationSection" class="hiddenField">
                 <td colspan="2">
                   <section>
-                    <h4>Considerations</h4>
-                    <p></p>
+                    <h4 id="consTittle">Considerations</h4>
+                    <p class = "center" id="consideration"></p>
                   </section>
                 </td>  
-              </tr> -->
+              </tr>
               
               <tr>
                 <td class="col1"><label for="npv">Feedback:</label></td>
