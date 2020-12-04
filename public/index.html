@@ -73,7 +73,7 @@
                 <label for="phone">Phone<span style="color: red;">*</span>:</label>
               </td>
               <td class="col2">
-                <input class="inputText" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="###-###-####">
+                <input class="inputText" type="tel" id="phone" name="phone" required placeholder="###-###-####">
               </td>
              </tr>
              <tr>
@@ -317,7 +317,7 @@
                 <td class="col1"><label for="prevalence">Prevalence (Covidcast):</label></td>
                 <td class="col2"><input class="inputText scoreField" type="number" id="prevalence" name="prevalence" disabled></td>
               </tr>
-              <tr class="hiddenField1">
+              <tr class="hiddenField">
                 <td class="col1"><label for="prevalenceScore">Prevalence Score:</label></td>
                 <td class="col2"><input class="inputText scoreField" type="number" id="prevalenceScore" name="prevalenceScore" disabled></td>
               </tr>
@@ -386,14 +386,14 @@
         <p>Predictive values of test results need to be interpreted according to both context and intended use. For instance, a negative SARS CoV2 PCR assay may reflect biologic absence of the virus, and lower probability of infectivity, while not ruling out SARS CoV2 as the cause of ongoing disease, especially when testing is performed late relative to onset of symptoms. The tool that was developed is meant to provide a general indicator using GREEN – YELLOW – RED symbols to assist clinicians in thinking through how pre-test probability can inform probabilistic interpretation, and to remind clinicians to consider results in context of use.</p>
       </div>
       <!-- JQuery script -->
-      <script defer src="./main.js"></script>
-      <script defer src="./neut_lymp_ratio.js"></script>
-      <script defer src="./totalScore.js"></script>
-      <script defer src="./preTestProbability.js"></script>
-      <script defer src="./ppv_npv.js"></script>
-      <script defer src="./sliderBar.js"></script>
-      <script defer src="./zipToFips.js"></script>
-      <script defer src="./prevalenceAPI.js"></script>
+      <script defer src="./js/main.js"></script>
+      <script defer src="./js/neut_lymp_ratio.js"></script>
+      <script defer src="./js/totalScore.js"></script>
+      <script defer src="./js/preTestProbability.js"></script>
+      <script defer src="./js/ppv_npv.js"></script>
+      <script defer src="./js/sliderBar.js"></script>
+      <script defer src="./js/zipToFips.js"></script>
+      <script defer src="./js/prevalenceAPI.js"></script>
       <!-- Firebase script -->
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
