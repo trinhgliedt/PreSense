@@ -30,7 +30,7 @@
       <div id="about" class="content">
         <p>Diagnosis of COVID-19 relies on detection of virus, in the form of nucleic acid or antigen, and/or detection of antibodies to the virus. These are detected temporally after infection and development of symptoms (Figure).</p>
         <img src="./images/covid_test.png" width="98%" alt="Covid test">
-        <p>Chart: The rise and fall of the virus in the airways and antibodies in the blood for 21 days after exposure to infection (Interpreting Covid-19 Test Results: A Bayesian Approach)</p>
+        <small class="center">Chart: The rise and fall of the virus in the airways and antibodies in the blood for 21 days after exposure to infection (Interpreting Covid-19 Test Results: A Bayesian Approach)</small>
         <p>Detection of virus with nucleic acid amplification testing (NAAT) or antigen is optimal early in the course of disease. Testing too late decreases sensitivity. However, antibodies appear later.</p>
         <p>While tests are reported as ‘positive’ and ‘negative,’ results need to be interpreted in context to determine the probability that a diagnostic test result is a correct indicator of COVID-19. This is a function of two things:</p>
         <ol>
@@ -39,6 +39,7 @@
         </ol>
         <p>According to Bayes Theorem, output is thus reported as negative predictive value (NPV) – how likely a negative test is to tell you that the patient really does not have COVID-19, and positive predictive value (PPV) – how likely a positive test tells you that the patient does have COVID-19.</p>
         <p>The tool does the math to generate post-test probabilities and offers diagnostic suggestions.</p>
+        <p>DISCLAIMER:<small>PreSense is an algorithmic tool ("Algorithm") developed by faculty at the Johns Hopkins University School of Medicine and Coding DoJo. The Algorithm is not an FDA-registered clinical decision support tool and has not been reviewed or approved for any use-including diagnosis or treatment of disease or other conditions, including Covid-19-by the FDA. The Johns Hopkins University and The Johns Hopkins Health System, Inc. (collectively, "Johns Hopkins") are making the Algorithm publicly available for academic and research use only. The Algorithm does not replace the independent clinical judgment of healthcare professionals or the performance of any clinical assessment. The Algorithm is not intended for the diagnosis or treatment of any disease or condition, including Covid-19 in individual patients. Johns Hopkins hereby disclaims any and all representations and warranties regarding the Algorithm, including warranties of fitness for use in clinical decision making and warranties that the Algorithm works as intended, is clinically safe, does not infringe third party intellectual property rights, and/or is free from defects and bugs.</small></p>
       </div>
       <!---------------- Tool ---------------->
       <div id="tool" style="display:none" class="content">
@@ -91,12 +92,12 @@
                 <input class="inputText" type="text" id="zipcode" name="zipcode" required>
               </td>
              </tr>
-             <tr class="hiddenField">
+             <tr class="hiddenField1">
               <td class="col1">
                 <label for="fips">FIPs:</label>
               </td>
               <td class="col2">
-                <input class="inputText" type="text" id="fips" name="fips">
+                <input class="inputText" type="text" id="fips" name="fips" disabled>
               </td>
              </tr>
            </table>
@@ -312,7 +313,7 @@
           <fieldset>
             <legend>Provider:</legend>
             <table>
-              <tr class="hiddenField">
+              <tr class="hiddenField1">
                 <td class="col1"><label for="prevalence">Prevalence (Covidcast):</label></td>
                 <td class="col2"><input class="inputText scoreField" type="text" id="prevalence" name="prevalence" disabled></td>
               </tr>
@@ -387,7 +388,33 @@
       <script defer src="./preTestProbability.js"></script>
       <script defer src="./ppv_npv.js"></script>
       <script defer src="./sliderBar.js"></script>
+      <script defer src="./zipToFips.js"></script>
       <!-- Firebase script -->
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+
+      <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+          apiKey: "AIzaSyAOYNb0Vsadr4y3Op8rK247HbISVllqqxw",
+          authDomain: "presense-cca11.firebaseapp.com",
+          databaseURL: "https://presense-cca11.firebaseio.com",
+          projectId: "presense-cca11",
+          storageBucket: "presense-cca11.appspot.com",
+          messagingSenderId: "263160703029",
+          appId: "1:263160703029:web:09809d4d63ff5eb11ea97c",
+          measurementId: "G-JHB25XTPGV"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+      </script>
     </div>
   </body>
 </html>

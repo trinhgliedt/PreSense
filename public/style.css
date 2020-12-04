@@ -1,5 +1,6 @@
 * {
     /* outline: 1px solid grey; */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 #container {
     margin: 0 auto;
@@ -252,8 +253,12 @@ small {
     margin-top: 1.5em;
     z-index: -1;
 }
- #testResultDisplay {
+#testResultDisplay {
     text-align: center;
     margin-top: 1.5em;
     z-index: 1;
- }
+}
+
+.center {
+    text-align: center;
+}
