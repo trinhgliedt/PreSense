@@ -29,34 +29,27 @@ function updatePrevalence(){
     geocode = $('input[name="fips"]').val();
     console.log('symptomDate: ', symptomDate);
     console.log('geocode: ', geocode);
+    var covidCastData;
     if (symptomDate.length === 8 && geocode.length === 5) {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function () {
-			if (this.readyState == 4 && this.status == 200) {
-				console.log('api call success', this.status, this.readyState);
-				var res = JSON.parse(this.responseText);
-				console.log('value: ', res);
-				if (res['result'] === 1) {
-					prevalence = res['epidata'][0]['value'].toFixed(4);
-					$('input[name="prevalence"]').val(prevalence);
-					prevalenceScore = Math.round(prevalence*10).toFixed(0);
-                    $('input[name="prevalenceScore"]').val(prevalenceScore);
-					updateScore();
-				} else {
-                    console.log('no result');
-					$('input[name="prevalence"]').val(prevalence);
-					$('input[name="prevalenceScore"]').val(prevalenceScore);
-					updateScore();
-					
-				}
-				
-			} else {
-				console.log('api call error or in progress', this.status, this.readyState);
-			}
-		}
 		
-		xhttp.open('GET', 'https://api.covidcast.cmu.edu/epidata/api.php?source=covidcast&data_source=indicator-combination&signal=nmf_day_doc_fbc_fbs_ght&time_type=day&geo_type=county&time_values=' + symptomDate + '&geo_value=' + geocode, true);
-		xhttp.send();
+		const fetchPrevalence = () => {
+            console.log('in Axios call', covidCastData);
+
+            axios.get('https://api.covidcast.cmu.edu/epidata/api.php?source=covidcast&data_source=indicator-combination&signal=nmf_day_doc_fbc_fbs_ght&time_type=day&geo_type=county&time_values=' + symptomDate + '&geo_value=' + geocode)
+                .then(res => {
+                    covidCastData = res.data;
+                    console.log('api call success', res.data);
+                    prevalence = covidCastData['epidata'][0]['value'].toFixed(4);
+                    $('input[name="prevalence"]').val(prevalence);
+                    prevalenceScore = Math.round(prevalence*10).toFixed(0);
+                    $('input[name="prevalenceScore"]').val(prevalenceScore);
+                    updateScore();
+                })
+                .catch(error => console.error(error));
+        };
+        fetchPrevalence();
+        
+
 	} else {
         console.log('date or geocode not available');
         $('input[name="prevalence"]').val(null);
