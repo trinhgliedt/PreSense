@@ -8,6 +8,7 @@
     <!-- update the version number as needed -->
     <link rel="stylesheet" href="./style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.1/firebase-ui-auth.css" /> -->
     
     <!-- 
       initialize the SDK after all desired features are loaded, set useEmulator to false
@@ -37,13 +38,13 @@
           <li>How good is the test? This depends on analytic sensitivity and specificity, and timing relative to symptoms; and</li>
           <li>How likely is it that someone has the disease? This is ‘pre-test probability,’ which is dependent on exposure (prevalence) and signs and symptoms of disease.</li>
         </ol>
-        <p>According to Bayes Theorem, output is thus reported as negative predictive value (NPV) – how likely a negative test is to tell you that the patient really does not have COVID-19, and positive predictive value (PPV) – how likely a positive test tells you that the patient does have COVID-19.</p>
+        <p>Applying Bayes Theorem, output is thus reported as negative predictive value (NPV) – how likely a negative test is to tell you that the patient really does not have COVID-19, and positive predictive value (PPV) – how likely a positive test tells you that the patient does have COVID-19.</p>
         <p>The tool does the math to generate post-test probabilities and offers diagnostic suggestions.</p>
         <p id="disclaimer">DISCLAIMER:<small>PreSense is an algorithmic tool ("Algorithm") developed by faculty at the Johns Hopkins University School of Medicine and Coding DoJo. The Algorithm is not an FDA-registered clinical decision support tool and has not been reviewed or approved for any use-including diagnosis or treatment of disease or other conditions, including Covid-19-by the FDA. The Johns Hopkins University and The Johns Hopkins Health System, Inc. (collectively, "Johns Hopkins") are making the Algorithm publicly available for academic and research use only. The Algorithm does not replace the independent clinical judgment of healthcare professionals or the performance of any clinical assessment. The Algorithm is not intended for the diagnosis or treatment of any disease or condition, including Covid-19 in individual patients. Johns Hopkins hereby disclaims any and all representations and warranties regarding the Algorithm, including warranties of fitness for use in clinical decision making and warranties that the Algorithm works as intended, is clinically safe, does not infringe third party intellectual property rights, and/or is free from defects and bugs.</small></p>
       </div>
       <!---------------- Tool ---------------->
       <div id="tool" style="display:none" class="content">
-        <form action="">
+        <form id="toolForm" action="">
           <!---------------- Provider ---------------->
           <fieldset>
            <legend>Provider:</legend>
@@ -94,14 +95,14 @@
               <tr>
                 <td class="col1"><label for="goal">Please make a selection<span style="color: red;">*</span>:</label></td>
                 <td class="col2">
-                  <input class="radio" type="radio" id="preTest" name="testGoal">
+                  <input class="radio" type="radio" id="preTest" name="testGoal" required>
                   <label for="preTest">Determine the diagnostic <span class="bold">pre-test </span>probability of COVID-19 with clinical presentation (no testing available).</label>
                 </td>
               </tr>
               <tr>
                 <td class="col1"></td>
                 <td class="col2">
-                  <input class="radio" type="radio" id="postTest" name="testGoal">
+                  <input class="radio" type="radio" id="postTest" name="testGoal" required>
                   <label for="postTest">Determine the diagnostic <span class="bold">post-test </span>probabilities of existing or planned SARS-CoV2 test results.</label>
                 </td>
               </tr>
@@ -118,7 +119,7 @@
                 </tr>
                 
                 <tr class="goalPCR">
-                  <td class="col1"><label for="goal">Indicate the PCR result:</td>
+                  <td class="col1"><label for="goalPCR">Indicate the PCR result:</td>
                   <td class="col2">
                     <input class="radio scoreField" type="radio" id="posPCR" name="pcrResult">
                     <label for="posPCR">Positive</label>
@@ -179,10 +180,10 @@
               </tr>
               <tr>
                 <td class="col1">
-                  <label for="zipcode">Zip Code<span style="color: red;">*</span>:</label>
+                  <label for="zipcode">Zip Code:</label>
                 </td>
                 <td class="col2">
-                  <input class="inputText" type="text" id="zipcode" name="zipcode" required maxlength="5">
+                  <input class="inputText" type="text" id="zipcode" name="zipcode" maxlength="5">
                 </td>
                </tr>
                <tr class="hiddenField1">
@@ -242,21 +243,21 @@
               <tr class="">
                 <td class="col1 formSection"><label for="exposure">Exposure<span style="color: red;">*</span>:</label></td>
                 <td class="col2 formSection">
-                  <input class="radio scoreField" type="radio" id="exposureProlonged" name="exposure" value="20">
+                  <input class="radio scoreField" type="radio" id="exposureProlonged" name="exposure" value="20" required>
                   <label for="exposureProlonged">Prolonged, close exposure to known case (ex. family).</label>
                 </td>
               </tr>
               <tr >
                 <td class="col1"></td>
                 <td class="col2">
-                  <input class="radio scoreField" type="radio" id="exposureBrief" name="exposure" value="10">
+                  <input class="radio scoreField" type="radio" id="exposureBrief" name="exposure" value="10" required>
                   <label for="exposureBrief" >Brief (&#60 3 hr) exposure to known case or exposure to possible case.</label>
                 </td>
               </tr>
               <tr>
                 <td class="col1"></td>
                 <td class="col2">
-                  <input class="radio scoreField" type="radio" id="exposurePossible" name="exposure" value="10">
+                  <input class="radio scoreField" type="radio" id="exposurePossible" name="exposure" value="10" required>
                   <label for="exposurePossible">Possible occupational (ex. health care) or institutional (nursing home) exposure.</label>
                 </td>
               </tr>
@@ -312,7 +313,7 @@
            </fieldset>
            <!---------------- Result ---------------->
           <fieldset>
-            <legend>Provider:</legend>
+            <legend>Result:</legend>
             <table>
               <tr class="hiddenField1">
                 <td class="col1"><label for="prevalence">Prevalence (Covidcast):</label></td>
@@ -371,6 +372,7 @@
            <!-- Bottom buttons -->
            <div>
             <input id="resetButton" type="reset" value="Reset">
+            <!-- <button id="submitButton">Submit</button> -->
             <input id="submitButton" type="submit" value="Submit">
 
            </div>
@@ -389,15 +391,16 @@
       <!-- JQuery script -->
       <script defer src="./js/main.js"></script>
       <script defer src="./js/neut_lymp_ratio.js"></script>
-      <!-- <script defer src="./js/totalScore.js"></script> -->
       <script defer src="./js/preTestProbability.js"></script>
       <script defer src="./js/ppv_npv.js"></script>
       <script defer src="./js/sliderBar.js"></script>
       <script defer src="./js/prevalenceAPI.js"></script>
+      <script defer src="./js/formSubmit.js"></script>
       <!-- Firebase script -->
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+      <!-- <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script> -->
 
       <!-- TODO: Add SDKs for Firebase products that you want to use
           https://firebase.google.com/docs/web/setup#available-libraries -->
