@@ -1,15 +1,8 @@
 
-const submitButton = document.getElementById("submitButton");
-// const db = firebase.database();
-
-// submitButton.addEventListener('click', (e) =>{
 $("form").submit(function(e){
     console.log('Submit button is clicked');
     e.preventDefault();
-    var ele = document.getElementById("FORM_ID");
-    $('input[name="fname"]').val().checkValidity();
-    $('input[name="fname"]').val().reportValidity();
-    db.ref("formData/").set({
+    dbFireStore.collection("formData").add({
         _1_provider_fname : $('input[name="fname"]').val(),
         _1_provider_lname : $('input[name="lname"]').val(),
         _1_provider_email : $('input[name="email"]').val(),
@@ -53,20 +46,19 @@ $("form").submit(function(e){
         _6_result_npv : $('input[name="npv"]').val(),
         _6_result_testResult : $('input[name="testResult"]').val(),
         _6_result_consideration: document.getElementById("consideration").innerHTML
-        
     })
-    alert("Information submitted successfully");
-    $('#toolForm').trigger("reset");
-    $(".goalTestType").hide();
-    $(".goalPCR").hide();
-    $(".goalIgg").hide();
-    $(".goalIgm").hide();
-    $(".hiddenField").hide();
-    $("html, body").animate({ scrollTop: 0 }, "slow");
-})
-
-
-
-
-
-// https://www.youtube.com/watch?v=mBGf_HF3kKw&ab_channel=TechWAR
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+        alert("Information submitted successfully");
+        $('#toolForm').trigger("reset");
+        $(".goalTestType").hide();
+        $(".goalPCR").hide();
+        $(".goalIgg").hide();
+        $(".goalIgm").hide();
+        $(".hiddenField").hide();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+});

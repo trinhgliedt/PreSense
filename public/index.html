@@ -395,13 +395,14 @@
       <script defer src="./js/ppv_npv.js"></script>
       <script defer src="./js/sliderBar.js"></script>
       <script defer src="./js/prevalenceAPI.js"></script>
-      <script defer src="./js/formSubmit.js"></script>
+      <!-- <script defer src="./js/formSubmit.js"></script> -->
+      <script defer src="./js/formSubmit_firestore.js"></script>
       <!-- Firebase script -->
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
       <!-- <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script> -->
-
+      <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
       <!-- TODO: Add SDKs for Firebase products that you want to use
           https://firebase.google.com/docs/web/setup#available-libraries -->
       <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
@@ -421,6 +422,7 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
+        var dbFireStore = firebase.firestore();
       </script>
     </div>
   </body>

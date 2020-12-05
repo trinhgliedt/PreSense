@@ -4,11 +4,6 @@ const submitButton = document.getElementById("submitButton");
 
 // submitButton.addEventListener('click', (e) =>{
 $("form").submit(function(e){
-        console.log('Submit button is clicked');
-        e.preventDefault();
-        // var ele = document.getElementById("FORM_ID");
-        // $('input[name="fname"]').val().checkValidity();
-        // $('input[name="fname"]').val().reportValidity();
     console.log('Submit button is clicked');
     e.preventDefault();
     db.ref("formData/").set({
