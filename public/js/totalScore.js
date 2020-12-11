@@ -4,8 +4,15 @@
 // fieldname134: Exposure
 // fieldname106: score
 // fieldname144: Prevalence Score
-
+var total_score = 0;
+var preTestProbability;
 $(".scoreField").change(function(){
+    calculateTotalScore();
+    // calculatePretestProb();
+});
+
+
+function calculateTotalScore(){
     var symptomScore = exposureScore = radiographyScore = neutLympScore = prevalenceScore = 0;
 
     // Calculate symptomScore:
@@ -48,8 +55,40 @@ $(".scoreField").change(function(){
     // Calculate prevalenceScore:
     prevalenceScore = parseInt($('input[name="prevalenceScore"]').val());
 
-    var total_score = symptomScore + exposureScore + radiographyScore + neutLympScore + prevalenceScore;
+    total_score = symptomScore + exposureScore + radiographyScore + neutLympScore + prevalenceScore;
     console.log("symptomScore: ", symptomScore, "exposureScore: ", exposureScore, "radiographyScore: ", radiographyScore, "neutLympScore: ", neutLympScore, "prevalenceScore: ", prevalenceScore, "total_score:", total_score);
 
     $('input[name="totalScore"]').val(total_score);
-});
+    calculatePretestProb();
+}
+
+function calculatePretestProb(){
+    console.log("start calculating PretestProb");
+    var score = total_score;
+    
+    if (score == 0) {
+        preTestProbability = 0.05;
+    }
+    else if (score > 0 && score <= 15) {
+        preTestProbability = 0.10;
+    }
+    else if (score > 15 && score <= 30) {
+        preTestProbability = 0.20;
+    }
+    else if (score > 30 && score <= 40) {
+        preTestProbability = 0.30;
+    }
+    else if (score > 40 && score <= 50) {
+        preTestProbability = 0.60;
+    }
+    else if (score > 50 && score <= 65) {
+        preTestProbability = 0.80;
+    }
+    else if (score > 65 && score <= 75) {
+        preTestProbability = 0.99;
+    }
+    else if (score > 75 && score <= 1000) {
+        preTestProbability = 0.90;
+    }
+    $('input[name="preTestProbability"]').val(preTestProbability);
+}
